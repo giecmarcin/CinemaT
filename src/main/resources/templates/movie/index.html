@@ -4,10 +4,13 @@
       layout:decorator="layout">
 
 <div layout:fragment="content">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><a th:href="@{/movie/add/}" class="btn btn-primary">Create</a></div>
+        <div class="panel-body">
+            <p>All movies in database</p>
+        </div>
 
-    <!--<p th:each="movie : ${movies}"-->
-    <!--th:text="${movie.title}">A Smoke Test</p>-->
-    <div class="panel-body">
         <table class="table table-hover">
             <tr>
                 <th>ID</th>
@@ -23,14 +26,14 @@
                 <td th:text="${movie.publicationDate}">PublicationDate</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="...">
-
-
-                        <!--<a href="movie/add/{id}" class="btn btn-primary btn-md">Edit</a>-->
-                        <a th:href="@{/movie/add/{id}/(id=${movie.id})}">Edit</a>
+                        <a th:href="@{/movie/{id}/(id=${movie.id})}" class="btn btn-primary">Details</a>
+                        <a th:href="@{/movie/add/{id}/(id=${movie.id})}" class="btn btn-warning">Edit</a>
+                        <a th:href="@{/movie/confirm/{id}/(id=${movie.id})}" class="btn btn-danger">Delete</a>
                     </div>
                 </td>
             </tr>
         </table>
+
     </div>
 </div>
 </html>

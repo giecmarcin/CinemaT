@@ -1,0 +1,27 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+
+<div layout:fragment="content">
+
+    <!--<p th:each="movie : ${movies}"-->
+    <!--th:text="${movie.title}">A Smoke Test</p>-->
+    <div class="panel-body">
+        <table class="table table-hover">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>PublicationDate</th>
+            </tr>
+            <tr th:each="movie  : ${movies}">
+                <td th:text="${movie.id}">Id</td>
+                <td th:text="${movie.title}">Title</td>
+                <td th:text="${movie.description}">Description</td>
+                <td th:text="${movie.publicationDate}">PublicationDate</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</html>

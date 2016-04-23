@@ -26,25 +26,30 @@ public class MovieController {
     private MovieService movieService;
 
     @RequestMapping(value = {"/add", "/add/{id}"})
-    public String getAddMovieForm(Model model, @PathVariable Optional<Long> id) {
+    public ModelAndView getAddMovieForm(Model model, @PathVariable Optional<Long> id) {
         Movie movie = null;
         if (id.isPresent()) {
             movie = movieService.findOne(id.get());
-        } else {
-            movie = new Movie();
+            if (movie != null) {
+                model.addAttribute("movie", movie);
+                return new ModelAndView("/movie/add");
+            } else {
+                return new ModelAndView("redirect:/movie/all");
+            }
         }
+        movie = new Movie();
         model.addAttribute("movie", movie);
-        return "/movie/add";
+        return new ModelAndView("/movie/add");
     }
 
     @RequestMapping(value = {"/add", "/add/{id}"}, method = RequestMethod.POST)
     public ModelAndView processAddMovieForm(@ModelAttribute("movie") Movie movie, @PathVariable Optional<Long> id) {
         if (id.isPresent()) {
             Movie newMovie = movieService.findOne(id.get());
-            if(newMovie!=null){
+            if (newMovie != null) {
                 newMovie = movie;
                 movieService.save(movie);
-            }else{
+            } else {
                 //Not Found
             }
         } else {
@@ -62,25 +67,29 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/{id}")
-    public String getDetailsOfMovie(Model model, @PathVariable Optional<Long> id){
-        if(id.isPresent()){
+    public ModelAndView getDetailsOfMovie(Model model, @PathVariable Optional<Long> id) {
+        if (id.isPresent()) {
             Movie movie = movieService.findOne(id.get());
-            if(movie!=null){
+            if (movie != null) {
                 model.addAttribute("movie", movie);
+                return new ModelAndView("/movie/details");
             }
         }
-        return "/movie/details";
+        return new ModelAndView("redirect:/movie/all");
     }
 
     @RequestMapping(value = {"/confirm/{id}"})
-    public String getConfirmTheDelationPage(Model model, @PathVariable Long id){
+    public ModelAndView getConfirmTheDelationPage(Model model, @PathVariable Long id) {
         Movie movie = movieService.findOne(id);
-        model.addAttribute("movie", movie );
-        return "/movie/confirm";
+        if (movie != null) {
+            model.addAttribute("movie", movie);
+            return new ModelAndView("/movie/confirm");
+        }
+        return new ModelAndView("redirect:/movie/all");
     }
 
     @RequestMapping(value = {"/remove/{id}"})
-    public ModelAndView removeMovie(@PathVariable Long id){
+    public ModelAndView removeMovie(@PathVariable Long id) {
         Movie movie = movieService.findOne(id);
         movieService.delete(movie);
         return new ModelAndView("redirect:/movie/all");
@@ -88,7 +97,7 @@ public class MovieController {
 
     @InitBinder("movie")
     public void initialiseBinder(WebDataBinder binder) {
-        binder.setAllowedFields("id","title", "description", "publicationDate");
+        binder.setAllowedFields("id", "title", "description", "publicationDate");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
         //Register it as custom editor for the Date type

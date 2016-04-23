@@ -31,6 +31,8 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public void delete(Movie movie) {
-        movieRepository.delete(movie);
+        if (movie != null) {
+            movieRepository.delete(movie);
+        }
     }
 }

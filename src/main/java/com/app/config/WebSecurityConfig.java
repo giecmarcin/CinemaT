@@ -20,8 +20,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login", "/register", "/logout", "/webjars/**", "/movie/**").permitAll()
-                .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
+                .antMatchers("/", "/login", "/register", "/logout", "/webjars/**").permitAll()
+                .antMatchers("/movie/**", "/admin/**").hasRole("Admin")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication().withUser("user").password("password").roles("USER"); // z tym dziala
+//        auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
         auth.userDetailsService(customUserDetailsService);
     }
 

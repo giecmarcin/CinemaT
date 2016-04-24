@@ -1,0 +1,17 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+
+<div layout:fragment="content">
+    <form action="#" th:action="@{/cinema/add}" th:object="${cinema}" method="post">
+        <br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>
+        <br/><input type="text" th:field="*{name}" class="form-control" placeholder="Name"/>
+        <br/><input type="text" th:field="*{city}" class="form-control" placeholder="City"/>
+        <br/><input type="text" th:field="*{street}" class="form-control" placeholder="Street"/>
+        <br/><input type="number" th:field="*{number}" class="form-control" placeholder="Number"/>
+        <br/>
+        <button type="submit" class="btn btn-md btn-primary pull-right">Save</button>
+    </form>
+</div>
+</html>

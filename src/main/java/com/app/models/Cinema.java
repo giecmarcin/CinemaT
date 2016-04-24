@@ -20,8 +20,9 @@ public class Cinema {
 
     private String name;
 
-    @OneToOne
-    private Address address;
+    private String city;
+    private String street;
+    private int number;
 
     @OneToMany
     @JoinColumn(name = "cinema_id")

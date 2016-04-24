@@ -1,0 +1,17 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+<div layout:fragment="content">
+    <div class="panel panel-default">
+        <p th:text="${user.name} + '!'"></p>
+        <p th:text="${user.email} + '!'"></p>
+        <!--<p th:each="role  : ${user.roles}">-->
+            <!--<p th:text="${name} + '!'"></p>-->
+        <!--</p>-->
+
+
+    </div>
+</div>
+</html>

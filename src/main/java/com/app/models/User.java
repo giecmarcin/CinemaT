@@ -13,7 +13,7 @@ import java.util.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     private String name;
     @Column(nullable = false, unique = true)
     private String email;
@@ -34,7 +34,7 @@ public class User {
         roles = new LinkedList<>();
     }
 
-    public User(int id, String name, String email, String password, Date dob) {
+    public User(Long id, String name, String email, String password, Date dob) {
         this.id = id;
         this.name = name;
         this.email = email;

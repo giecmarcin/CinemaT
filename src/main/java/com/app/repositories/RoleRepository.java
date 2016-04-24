@@ -9,4 +9,5 @@ import java.io.Serializable;
  * Created by Marcin on 22.04.2016.
  */
 public interface RoleRepository extends JpaRepository<Role, Serializable> {
+    Role findByName(String name);
 }

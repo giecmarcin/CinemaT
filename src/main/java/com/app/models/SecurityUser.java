@@ -1,12 +1,14 @@
 package com.app.models;
 
 
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 public class SecurityUser extends User implements UserDetails {
@@ -28,11 +30,11 @@ public class SecurityUser extends User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        Set<Role> userRoles = this.getRoles();
+        List<Role> userRoles = this.getRoles();
 
         if (userRoles != null) {
             for (Role role : userRoles) {
-                SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
+                SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getName());
                 authorities.add(authority);
             }
         }

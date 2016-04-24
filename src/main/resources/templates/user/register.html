@@ -1,0 +1,17 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+
+<div layout:fragment="content">
+    <form action="#" th:action="@{/user/add}" th:object="${user}" method="post">
+        <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
+        <br/><input type="text" th:field="*{name}" class="form-control" placeholder="Name"/>
+        <br/><input type="text" th:field="*{email}" class="form-control" placeholder="Email"/>
+        <br/><input type="password" th:field="*{password}" class="form-control" placeholder="Password"/>
+        <br/><input type="hidden" th:field="*{dob}" class="form-control" placeholder="Date of register"/>
+        <br/>
+        <button type="submit" class="btn btn-md btn-primary pull-right">Save</button>
+    </form>
+</div>
+</html>

@@ -60,10 +60,13 @@ public class MovieController {
 
 
     @RequestMapping(value = "/all")
-    public String getAllMovies(Model model) {
+    public ModelAndView getAllMovies(Model model) {
         List<Movie> movies = movieService.findAll();
-        model.addAttribute("movies", movies);
-        return "/movie/index";
+        if(movies!=null){
+            model.addAttribute("movies", movies);
+            return new ModelAndView("/movie/index");
+        }
+        return new ModelAndView("redirect/");
     }
 
     @RequestMapping(value = "/{id}")

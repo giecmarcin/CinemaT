@@ -6,7 +6,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
+import java.util.List;
+@Getter
+@Setter
 @Entity
 @Table(name = "ROLES")
 public class Role implements Serializable {
@@ -15,35 +17,23 @@ public class Role implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
     private Integer id;
+
     @Column(name = "role_name", nullable = false)
-    private String roleName;
+    private String name;
+
+    //for Test
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
+    private List<User> users;
 
     public Role() {
     }
 
     public Role(String roleName) {
-        this.roleName = roleName;
+        this.name = roleName;
     }
 
     public Role(Integer id, String roleName) {
         this.id = id;
-        this.roleName = roleName;
+        this.name = roleName;
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
 }

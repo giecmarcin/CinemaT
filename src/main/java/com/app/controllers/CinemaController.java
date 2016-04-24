@@ -94,7 +94,7 @@ public class CinemaController {
     public ModelAndView removeMovie(@PathVariable Long id) {
         Cinema cinema = cinemaService.findOne(id);
         cinemaService.delete(cinema);
-        return new ModelAndView("redirect:/movie/all");
+        return new ModelAndView("redirect:/cinema/all");
     }
 
 //    @InitBinder("cinema")

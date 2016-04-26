@@ -4,16 +4,27 @@
 
 
 <div layout:fragment="content">
-    <div th:if="${param.error}">
-        Invalid username and password.
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="login-container">
+                <h3>Panel logowania</h3>
+                <hr />
+                <div th:if="${param.error}">
+                    Nieprawidłowa nazwa użytkownika lub hasło.
+                </div>
+                <div th:if="${param.logout}">
+                    Zostałeś wylogowany.
+                </div>
+                <form th:action="@{/login}" method="post">
+                    <div><label> Nazwa użytkownika: <input type="text" name="username" class="form-control"
+                                                           placeholder="Nazwa użytkownika"/> </label></div>
+                    <div><label> Hasło: <input type="password" name="password" class="form-control"
+                                               placeholder="Hasło"/> </label></div>
+                    <center><div><input type="submit" class="btn btn-md btn-warning" value="Zaloguj"/></div></center>
+                </form>
+            </div>
+        </div>
     </div>
-    <div th:if="${param.logout}">
-        You have been logged out.
-    </div>
-    <form th:action="@{/login}" method="post">
-        <div><label> User Name : <input type="text" name="username" class="form-control" placeholder="username"/> </label></div>
-        <div><label> Password: <input type="password" name="password" class="form-control" placeholder="password"/> </label></div>
-        <div><input type="submit" value="Sign In"/></div>
-    </form>
 </div>
 </html>

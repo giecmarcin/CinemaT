@@ -4,36 +4,40 @@
       layout:decorator="layout">
 
 <div layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="main-container">
+                <h3>Lista filmów</h3>
+                <hr/>
+                <div class="panel-heading"><a th:href="@{/movie/add/}" class="btn btn-md btn-warning">Dodaj nowy film</a></div>
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading"><a th:href="@{/movie/add/}" class="btn btn-primary">Create</a></div>
-        <div class="panel-body">
-            <p>All movies in database</p>
-        </div>
+
+
 
         <table class="table table-hover">
             <tr>
                 <th>ID</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>PublicationDate</th>
-                <th>Actions</th>
+                <th>Tytuł filmu</th>
+                <th>Opis filmu</th>
+                <th>Data publikacji filmu</th>
+                <th>Akcje</th>
             </tr>
             <tr th:each="movie  : ${movies}">
                 <td th:text="${movie.id}">Id</td>
-                <td th:text="${movie.title}">Title</td>
-                <td th:text="${movie.description}">Description</td>
-                <td th:text="${movie.publicationDate}">PublicationDate</td>
+                <td th:text="${movie.title}">Tytuł</td>
+                <td th:text="${movie.description}">Opis</td>
+                <td th:text="${movie.publicationDate}">Data publikacji</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="...">
-                        <a th:href="@{/movie/{id}/(id=${movie.id})}" class="btn btn-primary">Details</a>
-                        <a th:href="@{/movie/add/{id}/(id=${movie.id})}" class="btn btn-warning">Edit</a>
-                        <a th:href="@{/movie/confirm/{id}/(id=${movie.id})}" class="btn btn-danger">Delete</a>
+                        <a th:href="@{/movie/{id}/(id=${movie.id})}" class="btn btn-sm btn-primary">Szczegóły</a>
+                        <a th:href="@{/movie/add/{id}/(id=${movie.id})}" class="btn btn-sm btn-warning">Edytuj</a>
+                        <a th:href="@{/movie/confirm/{id}/(id=${movie.id})}" class="btn btn-sm btn-danger">Usuń</a>
                     </div>
                 </td>
             </tr>
         </table>
 
     </div>
-</div>
+</div></div></div></div>
 </html>

@@ -38,54 +38,78 @@
         </a>
     </div>
     <br/>
-    <div class="row">
-        <div class="col-md-7">
-    <div class="panel panel-default">
+    <div class="container">
+        <div class="row">
 
-        <!-- Default panel contents -->
-        <table class="table table-hover">
-            <tr>
-                <th>ID</th>
-                <th>Nazwa filmu</th>
-                <th>Data publikacji</th>
-            </tr>
-            <tr th:each="movie  : ${movies}">
-                <td th:text="${movie.id}">Id</td>
-                <td th:text="${movie.title}">Nazwa filmu</td>
-                <td th:text="${movie.publicationDate}">Data publikacji</td>
-            </tr>
-        </table>
-    </div>
-</div>
 
-        <div class="col-md-5">
-            <h2>Aktualności</h2>
-            <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo1">Zmiana dat emisji</button>
-            <div id="demo1" class="collapse">
-                <h4>Zmiana dat emisji filmów "Niewinne" i "Mustang" 09.06.2016</h4>
-                Z przyczyn niezależnych od nas jesteśmy zmuszeni przesunąć o tydzień emisję filmu pt. "MUSTANG" -
-                wyświetlimy go 19 czerwca o godzinie 20:00. W związku z tym film "NIEWINNE", zaplanowany na 19.06,
-                zaprezentujemy widzom tydzień wcześniej czyli we wtorek 12 kwietnia. Za niedogodności przepraszamy.
-            </div>
-            <br /><br />
-            <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo2">Pożar w sali kinowej</button>
-            <div id="demo2" class="collapse">
-                <h4>Zmiana dat emisji filmów "Niewinne" i "Mustang" 09.06.2016</h4>
-                Z przyczyn niezależnych od nas jesteśmy zmuszeni przesunąć o tydzień emisję filmu pt. "MUSTANG" -
-                wyświetlimy go 19 czerwca o godzinie 20:00. W związku z tym film "NIEWINNE", zaplanowany na 19.06,
-                zaprezentujemy widzom tydzień wcześniej czyli we wtorek 12 kwietnia. Za niedogodności przepraszamy.
-            </div>
-            <br/><br/>
-            <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo3">Nowości w repertuarze</button>
-            <div id="demo3" class="collapse">
-                <h4>Zmiana dat emisji filmów "Niewinne" i "Mustang" 09.06.2016</h4>
-                Z przyczyn niezależnych od nas jesteśmy zmuszeni przesunąć o tydzień emisję filmu pt. "MUSTANG" -
-                wyświetlimy go 19 czerwca o godzinie 20:00. W związku z tym film "NIEWINNE", zaplanowany na 19.06,
-                zaprezentujemy widzom tydzień wcześniej czyli we wtorek 12 kwietnia. Za niedogodności przepraszamy.
-            </div>
+            <div class="col-md-7">
+                <div class="main-container">
+                    <h2>Repertuar</h2>
+                    <hr/>
+                    <div class="panel panel-default">
 
+                        <!-- Default panel contents -->
+                        <table class="table table-hover">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nazwa filmu</th>
+                                <th>Data publikacji</th>
+                            </tr>
+                            <tr th:each="movie  : ${movies}">
+                                <td th:text="${movie.id}">Id</td>
+                                <td th:text="${movie.title}">Nazwa filmu</td>
+                                <td th:text="${movie.publicationDate}">Data publikacji</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="main-container">
+                    <h2>Aktualności</h2>
+                    <hr />
+                    <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo1">Zmiana dat
+                        emisji
+                    </button>
+                    <div id="demo1" class="collapse">
+                        <h4>Zmiana dat emisji filmów "Niewinne" i "Mustang" 09.06.2016</h4>
+                        Z przyczyn niezależnych od nas jesteśmy zmuszeni przesunąć o tydzień emisję filmu pt. "MUSTANG"
+                        -
+                        wyświetlimy go 19 czerwca o godzinie 20:00. W związku z tym film "NIEWINNE", zaplanowany na
+                        19.06,
+                        zaprezentujemy widzom tydzień wcześniej czyli we wtorek 12 kwietnia. Za niedogodności
+                        przepraszamy.
+                    </div>
+                    <br/><hr />
+                    <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo2">Pożar w
+                        sali kinowej
+                    </button>
+                    <div id="demo2" class="collapse">
+                        <h4>Zmiana dat emisji filmów "Niewinne" i "Mustang" 09.06.2016</h4>
+                        Z przyczyn niezależnych od nas jesteśmy zmuszeni przesunąć o tydzień emisję filmu pt. "MUSTANG"
+                        -
+                        wyświetlimy go 19 czerwca o godzinie 20:00. W związku z tym film "NIEWINNE", zaplanowany na
+                        19.06,
+                        zaprezentujemy widzom tydzień wcześniej czyli we wtorek 12 kwietnia. Za niedogodności
+                        przepraszamy.
+                    </div>
+                    <br/><hr />
+                    <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo3">Nowości w
+                        repertuarze
+                    </button>
+                    <div id="demo3" class="collapse">
+                        <h4>Zmiana dat emisji filmów "Niewinne" i "Mustang" 09.06.2016</h4>
+                        Z przyczyn niezależnych od nas jesteśmy zmuszeni przesunąć o tydzień emisję filmu pt. "MUSTANG"
+                        -
+                        wyświetlimy go 19 czerwca o godzinie 20:00. W związku z tym film "NIEWINNE", zaplanowany na
+                        19.06,
+                        zaprezentujemy widzom tydzień wcześniej czyli we wtorek 12 kwietnia. Za niedogodności
+                        przepraszamy.
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>
+
 </html>

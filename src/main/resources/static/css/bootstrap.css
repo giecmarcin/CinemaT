@@ -2555,7 +2555,7 @@ output {
 }
 .form-control {
   display: block;
-  width: 100%;
+  width: 450px;
   height: 45px;
   padding: 10px 15px;
   font-size: 15px;

@@ -1,3 +1,32 @@
 @import url("bootstrap.min.css");
 @import url("bootstrap-theme.css");
 
+.login-container {
+    margin-top: 200px;
+    margin: 0 auto;
+    width: 500px; /* Whatever exact width you are looking for (not bound by preset bootstrap widths) */
+    background-color: #3c3c3c;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #be780a #e2e2e2;
+    padding: 25px;
+}
+.site-container {
+    margin-top: 200px;
+    margin: 0 auto;
+    width: 500px; /*!* Whatever exact width you are looking for (not bound by preset bootstrap widths) *!*/
+    background-color: #3c3c3c;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #be780a #e2e2e2;
+    padding: 25px;
+}
+.main-container {
+
+    margin: 0 auto;
+    background-color: #3c3c3c;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #be780a #e2e2e2;
+    padding: 25px;
+}

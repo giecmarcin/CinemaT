@@ -20,14 +20,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/user/login", "/user/add", "/user/account/logout", "/webjars/**", "/rest/**").permitAll()
+                .antMatchers("/", "/user/account/login", "/user/add", "/user/account/logout", "/webjars/**", "/rest/**").permitAll()
                 .antMatchers("/movie/**", "/admin/**", "/user/**", "/cinema/**").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/user/login")
+                .loginPage("/user/account/login")
                 .loginProcessingUrl("/login")
-                .failureUrl("/user/login")
+                .failureUrl("/user/account/login")
                 .permitAll();
     }
 

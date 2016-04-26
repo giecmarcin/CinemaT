@@ -33,7 +33,7 @@ public class UserController {
     private UserService userService;
 
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/account/login")
     public String getLoginPage() {
         return "/user/login";
     }
@@ -116,7 +116,7 @@ public class UserController {
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return new ModelAndView("redirect:/movie/login)");//You can redirect wherever you want, but generally it's a good practice to show login screen again.
+        return new ModelAndView("redirect:/user/account/login");//You can redirect wherever you want, but generally it's a good practice to show login screen again.
     }
 
     @InitBinder("user")

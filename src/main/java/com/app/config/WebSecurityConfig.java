@@ -15,19 +15,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomUserDetailsService customUserDetailsService; //podkresla could not autowired
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/user/account/login", "/user/add", "/user/account/logout", "/webjars/**", "/rest/**").permitAll()
+                .antMatchers("/", "/login", "/user/add", "/user/account/logout", "/webjars/**", "/rest/**").permitAll()
                 .antMatchers("/movie/**", "/admin/**", "/user/**", "/cinema/**").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/user/account/login")
+                .loginPage("/login")
+                .defaultSuccessUrl("/home")
                 .loginProcessingUrl("/login")
-                .failureUrl("/user/account/login")
+                .failureUrl("/login")
                 .permitAll();
     }
 

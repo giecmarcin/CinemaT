@@ -31,7 +31,7 @@
 
                     <ul class="dropdown-menu">
                         <!--<div sec:authorize="isAuthenticated()">-->
-                        <li sec:authorize="isAuthenticated()" class="dropdown"><a th:href="@{user/account/logout}">Wyloguj</a></li>
+                        <li sec:authorize="isAuthenticated()" class="dropdown"><a th:href="@{/logout}">Wyloguj</a></li>
                         <!--</div>-->
 
                         <!--<div sec:authorize="isAnonymous()">-->
@@ -51,7 +51,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li sec:authorize="isAnonymous()"><a th:href="@{/user/login}">Zaloguj</a></li>
+                <li sec:authorize="isAnonymous()"><a th:href="@{/login}">Zaloguj</a></li>
                 <li sec:authorize="isAnonymous()"><a th:href="@{/user/add}">Zarejestruj</a></li>
 
             </ul>

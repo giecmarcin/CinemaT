@@ -1,8 +1,6 @@
 package com.app.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -16,6 +14,10 @@ public class CinemaHall {
     @Id
     @GeneratedValue
     private Long id;
+
+    private String name;
+
+    private int numberOfSeats;
 
     @OneToMany
     @JoinColumn(name = "cinemaHall_id")

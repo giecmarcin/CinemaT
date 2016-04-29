@@ -1,19 +1,17 @@
 package com.app.controllers;
 
 import com.app.models.Cinema;
-import com.app.models.Movie;
+import com.app.models.CinemaHall;
 import com.app.services.CinemaService;
-import org.apache.tomcat.jni.Address;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +25,7 @@ public class CinemaController {
     @RequestMapping(value = {"/add", "/add/{id}"})
     public ModelAndView getAddMovieForm(Model model, @PathVariable Optional<Long> id) {
         Cinema cinema = null;
-        if (id.isPresent()) {
+        if (id.isPresent()) { //A tutaj nie dostaje not value present i update dziala
             cinema = cinemaService.findOne(id.get());
             if (cinema != null) {
                 model.addAttribute("cinema", cinema);
@@ -61,7 +59,7 @@ public class CinemaController {
     @RequestMapping(value = "/all")
     public ModelAndView getAllMovies(Model model) {
         List<Cinema> cinemas = cinemaService.findAll();
-        if(cinemas!=null){
+        if (cinemas != null) {
             model.addAttribute("cinemas", cinemas);
             return new ModelAndView("/cinema/index");
         }
@@ -96,6 +94,28 @@ public class CinemaController {
         cinemaService.delete(cinema);
         return new ModelAndView("redirect:/cinema/all");
     }
+
+    //Test
+    @RequestMapping(value = {"/hall", "/hall/{id}"})
+    public ModelAndView getAddCinemaHallForm(Model model, @PathVariable Optional<Long> id) {
+        CinemaHall cinemaHall = new CinemaHall();
+        model.addAttribute("cinemaHall", cinemaHall);
+        return new ModelAndView("/cinema/addHall");
+    }
+
+    @RequestMapping(value = {"/hall", "/hall/{id}"}, method = RequestMethod.POST)
+    public ModelAndView processAddCinemaHallForm(@ModelAttribute("cinemaHall") CinemaHall cinemaHall, @PathVariable Optional<Long> id) {
+        //Dlaczego dostaje No value Present?
+
+        Cinema cinema = cinemaService.findOne(id.get());
+        System.out.println("Test: " + id.get());
+        if (cinema != null) {
+            cinemaService.addCinemaHall(cinemaHall, cinema.getId());
+        }
+        return new ModelAndView("redirect:/cinema/all");
+    }
+    //The End
+
 
 //    @InitBinder("cinema")
 //    public void initialiseBinder(WebDataBinder binder) {

@@ -4,7 +4,7 @@
 
 
 <div layout:fragment="content">
-    <form action="#" th:action="@{/hall/add/{idCinema}}" th:object="${cinemaHall}" method="post">
+    <form action="#" th:action="@{/cinema/hall}" th:object="${cinemaHall}" method="post">
         <br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>
         <br/><input type="text" th:field="*{name}" class="form-control" placeholder="Name"/>
         <br/><input type="number" th:field="*{numberOfSeats}" class="form-control" placeholder="Number of Seats"/>

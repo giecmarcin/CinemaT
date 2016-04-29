@@ -2,6 +2,7 @@ package com.app.controllers;
 
 import com.app.models.Cinema;
 import com.app.models.CinemaHall;
+import com.app.models.dto.CinemaAndHall;
 import com.app.services.CinemaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,7 @@ public class CinemaController {
     @RequestMapping(value = {"/add", "/add/{id}"})
     public ModelAndView getAddMovieForm(Model model, @PathVariable Optional<Long> id) {
         Cinema cinema = null;
-        if (id.isPresent()) { //A tutaj nie dostaje not value present i update dziala
+        if (id.isPresent()) {
             cinema = cinemaService.findOne(id.get());
             if (cinema != null) {
                 model.addAttribute("cinema", cinema);
@@ -95,26 +96,22 @@ public class CinemaController {
         return new ModelAndView("redirect:/cinema/all");
     }
 
-    //Test
     @RequestMapping(value = {"/hall", "/hall/{id}"})
     public ModelAndView getAddCinemaHallForm(Model model, @PathVariable Optional<Long> id) {
         CinemaHall cinemaHall = new CinemaHall();
-        model.addAttribute("cinemaHall", cinemaHall);
+        CinemaAndHall cinemaAndHall = new CinemaAndHall();
+        Cinema cinema = cinemaService.findOne(id.get());
+        cinemaAndHall.setCinema(cinema);
+        cinemaAndHall.setCinemaHall(cinemaHall);
+        model.addAttribute("cAh", cinemaAndHall);
         return new ModelAndView("/cinema/addHall");
     }
 
     @RequestMapping(value = {"/hall", "/hall/{id}"}, method = RequestMethod.POST)
-    public ModelAndView processAddCinemaHallForm(@ModelAttribute("cinemaHall") CinemaHall cinemaHall, @PathVariable Optional<Long> id) {
-        //Dlaczego dostaje No value Present?
-
-        Cinema cinema = cinemaService.findOne(id.get());
-        System.out.println("Test: " + id.get());
-        if (cinema != null) {
-            cinemaService.addCinemaHall(cinemaHall, cinema.getId());
-        }
+    public ModelAndView processAddCinemaHallForm(@ModelAttribute("cAh") CinemaAndHall cinemaAndHall) {
+        cinemaService.addCinemaHall(cinemaAndHall.getCinemaHall(), cinemaAndHall.getCinema().getId());
         return new ModelAndView("redirect:/cinema/all");
     }
-    //The End
 
 
 //    @InitBinder("cinema")

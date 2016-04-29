@@ -4,10 +4,17 @@
 
 
 <div layout:fragment="content">
-    <form action="#" th:action="@{/cinema/hall}" th:object="${cinemaHall}" method="post">
-        <br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>
-        <br/><input type="text" th:field="*{name}" class="form-control" placeholder="Name"/>
-        <br/><input type="number" th:field="*{numberOfSeats}" class="form-control" placeholder="Number of Seats"/>
+    <form action="#" th:action="@{/cinema/hall}" th:object="${cAh}" method="post">
+        <br/><input type="hidden" th:field="*{cinemaHall.id}" class="form-control" placeholder="Id"/>
+        <br/><input type="text" th:field="*{cinemaHall.name}" class="form-control" placeholder="Name"/>
+        <br/><input type="number" th:field="*{cinemaHall.numberOfSeats}" class="form-control"
+                    placeholder="Number of Seats"/>
+
+        <br/><input type="hidden" th:field="*{cinema.id}"/>
+        <br/><input type="hidden" th:field="*{cinema.name}"/>
+        <br/><input type="hidden" th:field="*{cinema.city}"/>
+        <br/><input type="hidden" th:field="*{cinema.street}"/>
+        <br/><input type="hidden" th:field="*{cinema.number}"/>
         <br/>
         <button type="submit" class="btn btn-md btn-primary pull-right">Save</button>
     </form>

@@ -36,23 +36,21 @@ public class MovieController {
             } else {
                 return new ModelAndView("redirect:/movie/all");
             }
+        } else {
+            movie = new Movie();
+            model.addAttribute("movie", movie);
+            return new ModelAndView("/movie/add");
         }
-        movie = new Movie();
-        model.addAttribute("movie", movie);
-        return new ModelAndView("/movie/add");
     }
 
-    @RequestMapping(value = {"/add", "/add/{id}"}, method = RequestMethod.POST)
-    public ModelAndView processAddMovieForm(@ModelAttribute("movie") Movie movie, @PathVariable Optional<Long> id) {
-        if (id.isPresent()) {
-            Movie newMovie = movieService.findOne(id.get());
-            if (newMovie != null) {
-                newMovie = movie;
-                movieService.save(movie);
-            } else {
-                //Not Found
-            }
-        } else {
+    @RequestMapping(value = {"/add"}, method = RequestMethod.POST)
+    public ModelAndView processAddMovieForm(@ModelAttribute("movie") Movie movie) {
+        if(movie.getId()!=null){
+            Movie newMovie = movieService.findOne(movie.getId());
+            newMovie = movie;
+            movieService.save(movie);
+        }
+        else {
             movieService.save(movie);
         }
         return new ModelAndView("redirect:/movie/all");
@@ -62,7 +60,7 @@ public class MovieController {
     @RequestMapping(value = "/all")
     public ModelAndView getAllMovies(Model model) {
         List<Movie> movies = movieService.findAll();
-        if(movies!=null){
+        if (movies != null) {
             model.addAttribute("movies", movies);
             return new ModelAndView("/movie/index");
         }

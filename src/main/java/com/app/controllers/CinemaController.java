@@ -24,7 +24,7 @@ public class CinemaController {
     private CinemaService cinemaService;
 
     @RequestMapping(value = {"/add", "/add/{id}"})
-    public ModelAndView getAddMovieForm(Model model, @PathVariable Optional<Long> id) {
+    public ModelAndView getAddCinemaForm(Model model, @PathVariable Optional<Long> id) {
         Cinema cinema = null;
         if (id.isPresent()) {
             cinema = cinemaService.findOne(id.get());
@@ -40,17 +40,13 @@ public class CinemaController {
         return new ModelAndView("/cinema/add");
     }
 
-    @RequestMapping(value = {"/add", "/add/{id}"}, method = RequestMethod.POST)
-    public ModelAndView processAddMovieForm(@ModelAttribute("cinema") Cinema cinema, @PathVariable Optional<Long> id) {
-        if (id.isPresent()) {
-            Cinema newCinema = cinemaService.findOne(id.get());
-            if (newCinema != null) {
-                newCinema = cinema;
-                cinemaService.save(cinema);
-            } else {
-                //Not Found
-            }
-        } else {
+    @RequestMapping(value = {"/add"}, method = RequestMethod.POST)
+    public ModelAndView processAddCinemaForm(@ModelAttribute("cinema") Cinema cinema) {
+        if(cinema.getId()!=null){
+            Cinema newCinema = cinemaService.findOne(cinema.getId());
+            newCinema = cinema;
+            cinemaService.save(cinema);
+        }else{
             cinemaService.save(cinema);
         }
         return new ModelAndView("redirect:/cinema/all");
@@ -101,10 +97,14 @@ public class CinemaController {
         CinemaHall cinemaHall = new CinemaHall();
         CinemaAndHall cinemaAndHall = new CinemaAndHall();
         Cinema cinema = cinemaService.findOne(id.get());
-        cinemaAndHall.setCinema(cinema);
-        cinemaAndHall.setCinemaHall(cinemaHall);
-        model.addAttribute("cAh", cinemaAndHall);
-        return new ModelAndView("/cinema/addHall");
+        if(cinema!=null){
+            cinemaAndHall.setCinema(cinema);
+            cinemaAndHall.setCinemaHall(cinemaHall);
+            model.addAttribute("cAh", cinemaAndHall);
+            return new ModelAndView("/cinema/addHall");
+        }else{
+            return new ModelAndView("/cinema/all");
+        }
     }
 
     @RequestMapping(value = {"/hall", "/hall/{id}"}, method = RequestMethod.POST)

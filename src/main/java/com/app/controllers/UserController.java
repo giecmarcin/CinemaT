@@ -43,19 +43,13 @@ public class UserController {
         return new ModelAndView("/user/register");
     }
 
-    @RequestMapping(value = {"/add", "/add/{id}"}, method = RequestMethod.POST)
-    public ModelAndView processAddMovieForm(@ModelAttribute("user") User user, @PathVariable Optional<Long> id) {
-        if (id.isPresent()) {
-            User newUser = userService.findOne(id.get());
-            if (newUser != null) {
-                newUser = user;
-                userService.save(user);
-            } else {
-                //Not Found
-
-            }
+    @RequestMapping(value = {"/add"}, method = RequestMethod.POST)
+    public ModelAndView processAddMovieForm(@ModelAttribute("user") User user) {
+        if (user.getId() != null) {
+            User newUser = userService.findOne(user.getId());
+            newUser = user;
+            userService.save(user);
         } else {
-
             userService.save(user);
         }
         return new ModelAndView("redirect:/");

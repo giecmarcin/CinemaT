@@ -6,24 +6,28 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.Date;
-
-/**
- * Created by Marcin on 24.04.2016.
- */
 
 @Getter
 @Setter
 @Entity
-public class MovieShowing {
-
+public class Showing {
     @Id
     @GeneratedValue
     private Long id;
 
-    private Long CinemaId;
-    private  Long CinemaHallId;
-    private Long MovieId;
+    private Date date;
 
-    private Date dateOfShow;
+    @OneToOne
+    private Cinema cinema;
+
+    @OneToOne
+    private CinemaHall cinemaHall;
+
+    @OneToOne
+    private Movie movie;
+
+    public Showing() {
+    }
 }

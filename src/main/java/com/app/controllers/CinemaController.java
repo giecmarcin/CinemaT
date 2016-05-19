@@ -54,7 +54,7 @@ public class CinemaController {
 
 
     @RequestMapping(value = "/all")
-    public ModelAndView getAllMovies(Model model) {
+    public ModelAndView getAllCinemas(Model model) {
         List<Cinema> cinemas = cinemaService.findAll();
         if (cinemas != null) {
             model.addAttribute("cinemas", cinemas);

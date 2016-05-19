@@ -3,10 +3,7 @@ package com.app.models;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 @Getter
@@ -17,7 +14,11 @@ public class Showing {
     @GeneratedValue
     private Long id;
 
+    @Temporal(TemporalType.DATE)
     private Date date;
+
+    @Temporal(TemporalType.TIME)
+    private Date time;
 
     @OneToOne
     private Cinema cinema;

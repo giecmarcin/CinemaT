@@ -1,0 +1,46 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+<div layout:fragment="content">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><a th:href="@{/cinema/add/}" class="btn btn-primary">Create</a></div>
+        <div class="panel-body">
+            <p>All movies in database</p>
+        </div>
+
+        <table class="table table-hover">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Street</th>
+                <th>Number</th>
+                <th>Number Of Hall</th>
+                <th>Actions</th>
+            </tr>
+            <tr th:each="cinema  : ${cinemas}">
+                <td th:text="${cinema.id}">Id</td>
+                <td th:text="${cinema.name}">Name</td>
+                <td th:text="${cinema.city}">City</td>
+                <td th:text="${cinema.street}">Street</td>
+                <td th:text="${cinema.number}">Street</td>
+                <td th:text="${cinema.getCinemaHalls().size()}">Street</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <a th:href="@{/cinema/{id}/(id=${cinema.id})}" class="btn btn-primary">Details</a>
+                        <a th:href="@{/cinema/add/{id}/(id=${cinema.id})}" class="btn btn-warning">Edit</a>
+                        <a th:href="@{/cinema/confirm/{id}/(id=${cinema.id})}" class="btn btn-danger">Delete</a>
+                        <!--<a th:href="@{/hall/add/{idCinema}/(idCinema=${cinema.id})}" class="btn btn-primary">Details</a>-->
+                        <!--<a th:href="@{/cinema/hall/add(idCienma=1)}">Test</a>-->
+                        <a th:href="@{/cinema/hall/{id}/(id=${cinema.id})}" class="btn btn-warning">Add hall</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</html>

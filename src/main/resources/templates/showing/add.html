@@ -1,0 +1,20 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+
+<div layout:fragment="content">
+    <form action="#" th:action="@{/showing/add}" th:object="${showing}" method="post">
+        <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
+        <select th:field="${showing.movie}" class="dropdown">
+            <option th:each="movie : ${movies}"
+                    th:value="${movie}"
+                    th:text="${movie.title}">Wireframe
+            </option>
+        </select>
+
+        <br/>
+        <button type="submit" class="btn btn-md btn-primary pull-right">Save</button>
+    </form>
+</div>
+</html>

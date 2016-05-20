@@ -30,3 +30,6 @@
     border-color: #be780a #e2e2e2;
     padding: 25px;
 }
+select#movie.dropdown{
+    color:black; !important;
+}

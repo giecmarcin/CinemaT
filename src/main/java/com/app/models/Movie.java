@@ -24,4 +24,9 @@ public class Movie {
 
     @Temporal(TemporalType.DATE)
     private Date publicationDate;
+
+    @Override
+    public String toString() {
+        return id + " " + title;
+    }
 }

@@ -24,7 +24,7 @@ public class Showing {
     private Cinema cinema;
 
     @OneToOne
-    private CinemaHall cinemaHall;
+    private Cinemahall cinemahall;
 
     @OneToOne
     private Movie movie;

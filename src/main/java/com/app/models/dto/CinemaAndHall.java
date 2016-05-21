@@ -1,7 +1,8 @@
 package com.app.models.dto;
 
 import com.app.models.Cinema;
-import com.app.models.CinemaHall;
+import com.app.models.Cinemahall;
+import com.app.models.Cinemahall;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +14,7 @@ import lombok.Setter;
 @Setter
 public class CinemaAndHall {
     private Cinema cinema;
-    private CinemaHall cinemaHall;
+    private Cinemahall cinemahall;
 
     public CinemaAndHall() {
     }

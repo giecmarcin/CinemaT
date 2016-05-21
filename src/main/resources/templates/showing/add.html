@@ -6,10 +6,24 @@
 <div layout:fragment="content">
     <form action="#" th:action="@{/showing/add}" th:object="${showing}" method="post">
         <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
+        Wybierz film:
         <select th:field="${showing.movie}" class="dropdown">
             <option th:each="movie : ${movies}"
-                    th:value="${movie}"
-                    th:text="${movie.title}">Wireframe
+                    th:value="${movie.id}"
+                    th:text="${movie.toString()}">Wireframe
+            </option>
+        </select>
+
+        <br/>
+        Wybierz datę pokazu: <input type="date" th:field="${showing.date}" class="form-control" placeholder="date"/>
+        <br/>
+        Wybierz godzinę pokazu: <input type="time" th:field="${showing.time}" class="form-control" placeholder="time"/>
+        <br/>
+        Wybierz kino:
+        <select th:field="${showing.cinema}" class="dropdown">
+            <option th:each="cinema : ${cinemas}"
+                    th:value="${cinema.id}"
+                    th:text="${cinema.toString()}">Wireframe
             </option>
         </select>
 

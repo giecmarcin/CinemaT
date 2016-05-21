@@ -1,6 +1,6 @@
 package com.app.services.impl;
 
-import com.app.models.CinemaHall;
+import com.app.models.Cinemahall;
 import com.app.repositories.CinemaHallRepository;
 import com.app.services.CinemaHallService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,22 +15,22 @@ public class CinemaHallServiceImpl implements CinemaHallService {
     private CinemaHallRepository cinemaHallRepository;
 
     @Override
-    public CinemaHall save(CinemaHall cinemaHall) {
-        return cinemaHallRepository.save(cinemaHall);
+    public Cinemahall save(Cinemahall cinemahall) {
+        return cinemaHallRepository.save(cinemahall);
     }
 
     @Override
-    public CinemaHall findOne(Long id) {
+    public Cinemahall findOne(Long id) {
         return cinemaHallRepository.findOne(id);
     }
 
     @Override
-    public List<CinemaHall> findAll() {
+    public List<Cinemahall> findAll() {
         return cinemaHallRepository.findAll();
     }
 
     @Override
-    public void delete(CinemaHall cinemaHall) {
-        cinemaHallRepository.delete(cinemaHall);
+    public void delete(Cinemahall cinemahall) {
+        cinemaHallRepository.delete(cinemahall);
     }
 }

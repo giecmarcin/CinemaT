@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class CinemaHall {
+public class Cinemahall {
     @Id
     @GeneratedValue
     private Long id;
@@ -23,7 +23,12 @@ public class CinemaHall {
     @JoinColumn(name = "cinemaHall_id")
     List<Seat> seats;
 
-    public CinemaHall() {
+    public Cinemahall() {
         seats = new LinkedList<Seat>();
+    }
+
+    @Override
+    public String toString() {
+        return id + " " + name;
     }
 }

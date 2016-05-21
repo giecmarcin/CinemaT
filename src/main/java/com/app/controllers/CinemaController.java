@@ -1,7 +1,8 @@
 package com.app.controllers;
 
 import com.app.models.Cinema;
-import com.app.models.CinemaHall;
+import com.app.models.Cinemahall;
+import com.app.models.Cinemahall;
 import com.app.models.dto.CinemaAndHall;
 import com.app.services.CinemaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,12 +95,12 @@ public class CinemaController {
 
     @RequestMapping(value = {"/hall", "/hall/{id}"})
     public ModelAndView getAddCinemaHallForm(Model model, @PathVariable Optional<Long> id) {
-        CinemaHall cinemaHall = new CinemaHall();
+        Cinemahall cinemahall = new Cinemahall();
         CinemaAndHall cinemaAndHall = new CinemaAndHall();
         Cinema cinema = cinemaService.findOne(id.get());
         if(cinema!=null){
             cinemaAndHall.setCinema(cinema);
-            cinemaAndHall.setCinemaHall(cinemaHall);
+            cinemaAndHall.setCinemahall(cinemahall);
             model.addAttribute("cAh", cinemaAndHall);
             return new ModelAndView("/cinema/addHall");
         }else{
@@ -109,7 +110,7 @@ public class CinemaController {
 
     @RequestMapping(value = {"/hall", "/hall/{id}"}, method = RequestMethod.POST)
     public ModelAndView processAddCinemaHallForm(@ModelAttribute("cAh") CinemaAndHall cinemaAndHall) {
-        cinemaService.addCinemaHall(cinemaAndHall.getCinemaHall(), cinemaAndHall.getCinema().getId());
+        cinemaService.addCinemaHall(cinemaAndHall.getCinemahall(), cinemaAndHall.getCinema().getId());
         return new ModelAndView("redirect:/cinema/all");
     }
 

@@ -24,11 +24,16 @@ public class Cinema {
     private String street;
     private int number;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "cinema_id")
-    List<CinemaHall> cinemaHalls;
+    List<Cinemahall> cinemahalls;
 
     public Cinema() {
-        cinemaHalls = new LinkedList<CinemaHall>();
+        cinemahalls = new LinkedList<Cinemahall>();
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + city + " ul. " + street + " " + number;
     }
 }

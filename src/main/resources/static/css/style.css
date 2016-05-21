@@ -33,3 +33,11 @@
 select#movie.dropdown{
     color:black; !important;
 }
+
+select#cinema.dropdown{
+    color:black; !important;
+}
+
+select#cinemahall.dropdown{
+    color:black; !important;
+}

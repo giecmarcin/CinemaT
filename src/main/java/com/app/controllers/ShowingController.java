@@ -64,11 +64,14 @@ public class ShowingController {
 
     @RequestMapping(value = {"/add"}, method = RequestMethod.POST)
     public ModelAndView processAddCinemaForm(@Valid @ModelAttribute("showing") Showing showing, BindingResult result, HttpServletRequest request) {
-        //Long idOfMovie = Long.parseLong(result.getFieldValue("movie").toString());
-       // showing.setMovie(movieService.findOne(idOfMovie));
-        if(result.hasErrors()){
-            System.out.println(result.getAllErrors());
-        }
+        Long idOfMovie = Long.parseLong(result.getFieldValue("movie").toString());
+        showing.setMovie(movieService.findOne(idOfMovie));
+        Long idOfCinema = Long.parseLong(result.getFieldValue("cinema").toString());
+        showing.setCinema(cinemaService.findOne(idOfCinema));
+
+//        if (result.hasErrors()) {
+//            System.out.println(result.getAllErrors());
+//        }
         if (showing.getId() != null) {
             System.out.println(showing.getMovie());
             Showing newShowing = showingService.findOne(showing.getId());
@@ -77,11 +80,15 @@ public class ShowingController {
         } else {
             showingService.save(showing);
         }
-        return new ModelAndView("redirect:/showing/all");
+        return new ModelAndView("redirect:/showing/hall/" + showing.getId());
     }
 
     @InitBinder("showing")
     public void initialiseBinder(WebDataBinder binder) {
-        binder.setAllowedFields("id", "movie");
+        binder.setAllowedFields("id", "movie", "cinema", "date", "time");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
+        //Register it as custom editor for the Date type
+        binder.registerCustomEditor(Date.class, editor);
     }
 }

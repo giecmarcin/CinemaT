@@ -1,7 +1,8 @@
 package com.app.services.impl;
 
 import com.app.models.Cinema;
-import com.app.models.CinemaHall;
+import com.app.models.Cinemahall;
+import com.app.models.Cinemahall;
 import com.app.models.Seat;
 import com.app.repositories.CinemaRepository;
 import com.app.services.CinemaHallService;
@@ -48,15 +49,15 @@ public class CinemaServiceImpl implements CinemaService {
     }
 
     @Override
-    public void addCinemaHall(CinemaHall cinemaHall, Long cinemaId) {
-        for (int i = 0; i < cinemaHall.getNumberOfSeats(); i++) {
+    public void addCinemaHall(Cinemahall cinemahall, Long cinemaId) {
+        for (int i = 0; i < cinemahall.getNumberOfSeats(); i++) {
             Seat seat = new Seat(i);
             seatService.save(seat);
-            cinemaHall.getSeats().add(seat);
+            cinemahall.getSeats().add(seat);
         }
-        CinemaHall cH = cinemaHallService.save(cinemaHall);
+        Cinemahall cH = cinemaHallService.save(cinemahall);
         Cinema cinema = cinemaRepository.findOne(cinemaId);
-        cinema.getCinemaHalls().add(cinemaHall);
+        cinema.getCinemahalls().add(cinemahall);
         cinemaRepository.save(cinema);
     }
 

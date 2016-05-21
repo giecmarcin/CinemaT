@@ -83,6 +83,17 @@ public class ShowingController {
         return new ModelAndView("redirect:/showing/hall/" + showing.getId());
     }
 
+
+    @RequestMapping(value = {"/cinema/{id}"})
+    public ModelAndView getAllShowingInCinema(Map<String, Object> modelMap, @PathVariable Optional<Long> id) {
+        System.out.println("tto: " + id.get());
+        if (id.isPresent()) {
+            List<Showing> showings = showingService.findAllShowingInCinema(id.get());
+           modelMap.put("showings", showings);
+        }
+        return new ModelAndView("/showing/allForUser");
+    }
+
     @InitBinder("showing")
     public void initialiseBinder(WebDataBinder binder) {
         binder.setAllowedFields("id", "movie", "cinema", "date", "time");

@@ -41,3 +41,7 @@ select#cinema.dropdown{
 select#cinemahall.dropdown{
     color:black; !important;
 }
+
+select#id.dropdown{
+    color:black;; !important;
+}

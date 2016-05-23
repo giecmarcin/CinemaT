@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-@Entity
+@Entity(name="Showing")
 public class Showing {
     @Id
     @GeneratedValue

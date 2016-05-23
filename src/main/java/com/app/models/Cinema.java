@@ -11,7 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@Entity(name="Cinema")
 public class Cinema {
 
     @Id

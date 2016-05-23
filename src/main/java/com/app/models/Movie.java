@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "Movie")
 public class Movie {
     @Id
     @GeneratedValue
@@ -27,6 +27,6 @@ public class Movie {
 
     @Override
     public String toString() {
-        return id + " " + title ;
+        return title;
     }
 }

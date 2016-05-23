@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@Entity(name="Cinemahall")
 public class Cinemahall {
     @Id
     @GeneratedValue

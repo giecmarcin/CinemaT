@@ -4,9 +4,15 @@
       layout:decorator="layout">
 
 <div layout:fragment="content">
-    <div class="panel panel-default">
-        Czy jesteś pewny?
-        <a th:href="@{/cinema/remove/{id}/(id=${cinema.id})}" class="btn btn-danger">Delete</a>
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="site-container">
+                <h3>Panel usuwania filmu</h3>
+                <hr/>
+                <div>Czy jesteś pewny?<br /></div>
+
+
+                <center><div><a th:href="@{/cinema/remove/{id}/(id=${cinema.id})}" class="btn btn-md btn-warning">Usuń</a></div></center>
+            </div></div></div>
 </div>
 </html>

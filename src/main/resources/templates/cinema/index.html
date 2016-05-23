@@ -4,43 +4,44 @@
       layout:decorator="layout">
 
 <div layout:fragment="content">
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading"><a th:href="@{/cinema/add/}" class="btn btn-primary">Create</a></div>
-        <div class="panel-body">
-            <p>All movies in database</p>
-        </div>
+    <div class="container">
+        <div class="row">
+            <div class="main-container">
+                <h3>Lista filmów</h3>
+                <hr/>
+        <div class="panel-heading"><a th:href="@{/cinema/add/}" class="btn  btn btn-warning">Dodaj nowe kino</a></div>
+                <div class="panel panel-default">
 
         <table class="table table-hover">
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>City</th>
-                <th>Street</th>
-                <th>Number</th>
-                <th>Number Of Hall</th>
-                <th>Actions</th>
+                <th>Nazwa</th>
+                <th>Miasto</th>
+                <th>Ulica</th>
+                <th>Numer budynku</th>
+                <th>Ilość sal kinowych</th>
+                <th>Akcje</th>
             </tr>
             <tr th:each="cinema  : ${cinemas}">
                 <td th:text="${cinema.id}">Id</td>
-                <td th:text="${cinema.name}">Name</td>
-                <td th:text="${cinema.city}">City</td>
-                <td th:text="${cinema.street}">Street</td>
-                <td th:text="${cinema.number}">Street</td>
-                <td th:text="${cinema.getCinemahalls().size()}">Street</td>
+                <td th:text="${cinema.name}">Nazwa</td>
+                <td th:text="${cinema.city}">Miasto</td>
+                <td th:text="${cinema.street}">Ulica</td>
+                <td th:text="${cinema.number}">Numer budynku</td>
+                <td th:text="${cinema.getCinemahalls().size()}">Ilość sal kinowych</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="...">
-                        <a th:href="@{/cinema/{id}/(id=${cinema.id})}" class="btn btn-primary">Details</a>
-                        <a th:href="@{/cinema/add/{id}/(id=${cinema.id})}" class="btn btn-warning">Edit</a>
-                        <a th:href="@{/cinema/confirm/{id}/(id=${cinema.id})}" class="btn btn-danger">Delete</a>
+                        <a th:href="@{/cinema/{id}/(id=${cinema.id})}" class="btn btn-primary">Szczegóły</a>
+                        <a th:href="@{/cinema/add/{id}/(id=${cinema.id})}" class="btn btn-warning">Edytuj</a>
+                        <a th:href="@{/cinema/confirm/{id}/(id=${cinema.id})}" class="btn btn-danger">Usuń</a>
                         <!--<a th:href="@{/hall/add/{idCinema}/(idCinema=${cinema.id})}" class="btn btn-primary">Details</a>-->
                         <!--<a th:href="@{/cinema/hall/add(idCienma=1)}">Test</a>-->
-                        <a th:href="@{/cinema/hall/{id}/(id=${cinema.id})}" class="btn btn-warning">Add hall</a>
+                        <a th:href="@{/cinema/hall/{id}/(id=${cinema.id})}" class="btn btn-info">Dodaj salę</a>
                     </div>
                 </td>
             </tr>
         </table>
 
     </div>
-</div>
+</div></div></div></div>
 </html>

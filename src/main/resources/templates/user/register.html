@@ -4,14 +4,31 @@
 
 
 <div layout:fragment="content">
-    <form action="#" th:action="@{/user/add}" th:object="${user}" method="post">
-        <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
-        <br/><input type="text" th:field="*{name}" class="form-control" placeholder="Name"/>
-        <br/><input type="text" th:field="*{email}" class="form-control" placeholder="Email"/>
-        <br/><input type="password" th:field="*{password}" class="form-control" placeholder="Password"/>
-        <br/><input type="hidden" th:field="*{dob}" class="form-control" placeholder="Date of register"/>
-        <br/>
-        <button type="submit" class="btn btn-md btn-primary pull-right">Save</button>
-    </form>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="site-container">
+                <form action="#" th:action="@{/user/add}" th:object="${user}" method="post">
+                    <h3>Panel dodawania nowego użytkownika</h3>
+                    <hr/>
+                    <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
+                    <div><label>Nazwa użytkownika:<input type="text" th:field="*{name}" class="form-control"
+                                                         placeholder="Name"/></label></div>
+                    <div><label>Email:<input type="text" th:field="*{email}" class="form-control" placeholder="Email"/></label>
+                    </div>
+                    <div><label>Hasło:<input type="password" th:field="*{password}" class="form-control"
+                                             placeholder="Password"/></label></div>
+                    <div><label>Data rejestracji:<input type="hidden" th:field="*{dob}" class="form-control"
+                                                        placeholder="Date of register"/></label></div>
+                    <div>
+                        <center>
+                            <button type="submit" class="btn btn-md btn-warning">Dodaj</button>
+
+                    </center>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 </html>

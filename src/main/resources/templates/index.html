@@ -40,21 +40,29 @@
     <br/>
     <div class="container">
         <div class="row">
-
-            <form action="#" th:action="@{/}" th:object="${cinema}" method="post">
-                <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
-                Wybierz kino:
-                <select th:field="${cinema.id}" class="dropdown">
-                    <option th:each="cinema : ${cinemas}"
-                            th:value="${cinema.id}"
-                            th:text="${cinema.toString()}">Wireframe
-                    </option>
-                </select>
-
-                <br/>
-                <button type="submit" class="btn btn-md btn-primary pull-right">Save</button>
-            </form>
-
+            <div class="main-container">
+                <h3>Lista kin</h3>
+                <hr/>
+                <form action="#" th:action="@{/}" th:object="${cinema}" method="post">
+                    <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
+                    <div><label> Wybierz kino:
+                        <select th:field="${cinema.id}" class="dropdown">
+                            <option th:each="cinema : ${cinemas}"
+                                    th:value="${cinema.id}"
+                                    th:text="${cinema.toString()}">Wireframe
+                            </option>
+                        </select>
+                    </label></div>
+                    <center>
+                        <div>
+                            <button type="submit" class="btn btn-md btn-warning">Dodaj</button>
+                        </div>
+                    </center>
+                </form>
+            </div>
+        </div>
+        <br /><br />
+        <div class="row">
             <div class="col-md-7">
                 <div class="main-container">
                     <h2>Repertuar</h2>

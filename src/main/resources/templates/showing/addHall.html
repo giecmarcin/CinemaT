@@ -4,19 +4,29 @@
 
 
 <div layout:fragment="content">
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="site-container">
     <form action="#" th:action="@{/cinema/hall}" th:object="${cAh}" method="post">
         <br/><input type="hidden" th:field="*{cinemaHall.id}" class="form-control" placeholder="Id"/>
-        <br/><input type="text" th:field="*{cinemaHall.name}" class="form-control" placeholder="Name"/>
-        <br/><input type="number" th:field="*{cinemaHall.numberOfSeats}" class="form-control"
-                    placeholder="Number of Seats"/>
+        <div><label> Nazwa sali kinowej:<br/><input type="text" th:field="*{cinemaHall.name}" class="form-control" placeholder="Name"/></label></div>
+            <div><label> Liczba siedzeń:<br/><input type="number" th:field="*{cinemaHall.numberOfSeats}" class="form-control"
+                    placeholder="Number of Seats"/></label></div>
 
-        <br/><input type="hidden" th:field="*{cinema.id}"/>
-        <br/><input type="hidden" th:field="*{cinema.name}"/>
-        <br/><input type="hidden" th:field="*{cinema.city}"/>
-        <br/><input type="hidden" th:field="*{cinema.street}"/>
-        <br/><input type="hidden" th:field="*{cinema.number}"/>
-        <br/>
-        <button type="submit" class="btn btn-md btn-primary pull-right">Save</button>
+        <input type="hidden" th:field="*{cinema.id}"/>
+        <input type="hidden" th:field="*{cinema.name}"/>
+        <input type="hidden" th:field="*{cinema.city}"/>
+        <input type="hidden" th:field="*{cinema.street}"/>
+        <input type="hidden" th:field="*{cinema.number}"/>
+        <center>
+            <div>
+                <button type="submit" class="btn btn-md btn-warning pull-right">Dodaj</button>
+            </div>
+        </center>
     </form>
+            </div>
+        </div>
+    </div>
 </div>
 </html>

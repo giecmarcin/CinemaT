@@ -4,18 +4,27 @@
 
 
 <div layout:fragment="content">
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="site-container">
     <form action="#" th:action="@{/showing/hall}" th:object="${showing}" method="post">
-        <br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>
-        Wybierz sale:
+        <h3>Panel dodawania xxxx</h3>
+        <hr/>
+        <input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>
+        <div><label> Wybierz salę:
         <select th:field="${showing.cinemahall}" class="dropdown">
             <option th:each="cinemahall : ${halls}"
                     th:value="${cinemahall.id}"
                     th:text="${cinemahall.toString()}">Wireframe
             </option>
         </select>
-
+</label></div>
         <br/>
-        <button type="submit" class="btn btn-md btn-primary pull-right">Save</button>
+        <center><div><button type="submit" class="btn btn-md btn-warning">Dodaj</button></div></center>
     </form>
+            </div>
+        </div>
+    </div>
 </div>
 </html>

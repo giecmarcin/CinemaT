@@ -4,14 +4,23 @@
 
 
 <div layout:fragment="content">
-    <form action="#" th:action="@{/cinema/add}" th:object="${cinema}" method="post">
-        <br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>
-        <br/><input type="text" th:field="*{name}" class="form-control" placeholder="Name"/>
-        <br/><input type="text" th:field="*{city}" class="form-control" placeholder="City"/>
-        <br/><input type="text" th:field="*{street}" class="form-control" placeholder="Street"/>
-        <br/><input type="number" th:field="*{number}" class="form-control" placeholder="Number"/>
-        <br/>
-        <button type="submit" class="btn btn-md btn-primary pull-right">Save</button>
-    </form>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="site-container">
+                <form action="#" th:action="@{/cinema/add}" th:object="${cinema}" method="post">
+                    <h3>Panel dodawania kina</h3>
+                    <hr/>
+                    <input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>
+                    <div><label> Nazwa kina:<input type="text" th:field="*{name}" class="form-control" placeholder="Name"/></label></div>
+                    <div><label> Miasto:<input type="text" th:field="*{city}" class="form-control" placeholder="City"/></label></div>
+                    <div><label> Ulica:<input type="text" th:field="*{street}" class="form-control" placeholder="Street"/></label></div>
+                    <div><label> Numer budynku:<input type="number" th:field="*{number}" class="form-control" placeholder="Number"/></label></div>
+                    <center><div><button type="submit" class="btn btn-md btn-warning">Dodaj</button></div></center>
+                    <br />
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 </html>

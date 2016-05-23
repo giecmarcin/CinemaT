@@ -4,19 +4,36 @@
 
 
 <div layout:fragment="content">
-    <form action="#" th:action="@{/cinema/hall}" th:object="${cAh}" method="post">
-        <br/><input type="hidden" th:field="*{cinemahall.id}" class="form-control" placeholder="Id"/>
-        <br/><input type="text" th:field="*{cinemahall.name}" class="form-control" placeholder="Name"/>
-        <br/><input type="number" th:field="*{cinemahall.numberOfSeats}" class="form-control"
-                    placeholder="Number of Seats"/>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="site-container">
+                <form action="#" th:action="@{/cinema/hall}" th:object="${cAh}" method="post">
+                    <h3>Panel dodawania sali kinowej</h3>
+                    <hr/>
+                    <input type="hidden" th:field="*{cinemahall.id}" class="form-control" placeholder="Id"/>
+                    <div><label> Nazwa sali kinowej:<input type="text" th:field="*{cinemahall.name}"
+                                                           class="form-control"
+                                                           placeholder="Nazwa sali kinowej"/></label></div>
+                    <div><label> Liczba siedzeń:<input type="number" th:field="*{cinemahall.numberOfSeats}"
+                                                       class="form-control"
+                                                       placeholder="Liczba siedzeń"/></label></div>
 
-        <br/><input type="hidden" th:field="*{cinema.id}"/>
-        <br/><input type="hidden" th:field="*{cinema.name}"/>
-        <br/><input type="hidden" th:field="*{cinema.city}"/>
-        <br/><input type="hidden" th:field="*{cinema.street}"/>
-        <br/><input type="hidden" th:field="*{cinema.number}"/>
-        <br/>
-        <button type="submit" class="btn btn-md btn-primary pull-right">Save</button>
-    </form>
+                   <input type="hidden" th:field="*{cinema.id}"/>
+                    <input type="hidden" th:field="*{cinema.name}"/>
+                    <input type="hidden" th:field="*{cinema.city}"/>
+                    <input type="hidden" th:field="*{cinema.street}"/>
+                    <input type="hidden" th:field="*{cinema.number}"/>
+
+                    <center>
+                        <div>
+                            <button type="submit" class="btn btn-md btn-warning pull-right">Dodaj</button>
+                        </div>
+                    </center>
+                    <br/>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 </html>

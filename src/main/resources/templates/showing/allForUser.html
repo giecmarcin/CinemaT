@@ -2,8 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-      xmlns:spring="http://jboss.org/xml/ns/javax/validation/mapping"
       layout:decorator="layout">
 
 <div layout:fragment="content">
@@ -77,7 +75,8 @@
                                 <td th:text="${showing.cinemahall.getName()}">Sala</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="...">
-                                        <a th:href="@{/book}" class="btn btn-sm btn-primary">Rezerwuj</a>
+                                        <a th:href="@{/booking/add/{id}/(id=${showing.id})}"
+                                           class="btn btn-sm btn-primary">Rezerwuj</a>
                                     </div>
                                 </td>
                             </tr>

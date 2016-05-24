@@ -1,0 +1,45 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+
+<div layout:fragment="content">
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="site-container">
+                <form action="#" th:action="@{/showing/add}" th:object="${showing}" method="post">
+                    <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
+                    <div><label> Tytuł filmu:
+                        <select th:field="${showing.movie}" class="dropdown">
+                            <option th:each="movie : ${movies}"
+                                    th:value="${movie.id}"
+                                    th:text="${movie.toString()}">Wireframe
+                            </option>
+                        </select></label></div>
+
+                    <div><label> Wybierz datę pokazu:<input type="date" th:field="${showing.date}"
+                                                            class="form-control" placeholder="date"/></label></div>
+                    <div><label> Wybierz godzinę pokazu: <input type="time" th:field="${showing.time}"
+                                                                class="form-control" placeholder="time"/></label>
+                    </div>
+                    <div><label> Wybierz kino:
+                        <select th:field="${showing.cinema}" class="dropdown">
+                            <option th:each="cinema : ${cinemas}"
+                                    th:value="${cinema.id}"
+                                    th:text="${cinema.toString()}">Wireframe
+                            </option>
+                        </select></label></div>
+
+
+                    <center>
+                        <div>
+                            <button type="submit" class="btn btn-md btn-warning">Dodaj</button>
+                        </div>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

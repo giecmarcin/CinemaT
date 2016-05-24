@@ -15,14 +15,13 @@
                     <!--Przerób tego selecta na kwadraty tak, żeby to był jakby widok całej sali-->
 
                     <!--Tabelka-->
-                    <table class="table table-hover">
-                        <tr>
-                            <!--<th>Nazwa</th>-->
-                        </tr>
-                        <tr th:each="seat  : ${allseats}">
-                            <td th:text="${seat.toString()}">Id</td>
-                        </tr>
-                    </table>
+
+
+                        <div th:each="seat  : ${allseats}" class="siedzenia">
+                            <div th:text="${seat.toString()}">Id</div>
+                        </div>
+
+
 
                     <!--Koniec Tabelki-->
                     <!--<div><label> Wybierz wolne miejsce z listy:-->

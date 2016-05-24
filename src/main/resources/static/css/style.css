@@ -54,3 +54,13 @@ select#allAseats.dropdown {
 .toLeft{
     margin-left:-30px;
 }
+.siedzenia{
+    float:left;
+    margin: 5px;
+    padding: 15px;
+    text-align:center;
+    background: url(../images/seat.png);
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    color: black;
+}

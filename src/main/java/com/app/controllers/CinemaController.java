@@ -100,6 +100,11 @@ public class CinemaController {
         if(cinema!=null){
             cinemaAndHall.setCinema(cinema);
             cinemaAndHall.setCinemahall(cinemahall);
+            if (cinemaAndHall.getCinemahall() != null) {
+                int numberOfCinemaHalls = cinema.getCinemahalls().size();
+                cinemaAndHall.getCinemahall().setName("Sala " + (numberOfCinemaHalls + 1));
+            }
+
             cinemaAndHall.getCinemahall().setNumberOfSeats(50);
             model.addAttribute("cAh", cinemaAndHall);
             return new ModelAndView("/cinema/addHall");

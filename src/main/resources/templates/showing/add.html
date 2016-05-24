@@ -11,7 +11,7 @@
                 <form action="#" th:action="@{/showing/add}" th:object="${showing}" method="post">
                     <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
                     <div><label> Tytuł filmu:
-                        <select th:field="${showing.movie}" class="dropdown">
+                        <select th:field="${showing.movie}" class="dropdown form-control">
                             <option th:each="movie : ${movies}"
                                     th:value="${movie.id}"
                                     th:text="${movie.toString()}">Wireframe
@@ -24,7 +24,7 @@
                                                                     class="form-control" placeholder="time"/></label>
                         </div>
                         <div><label> Wybierz kino:
-                            <select th:field="${showing.cinema}" class="dropdown">
+                            <select th:field="${showing.cinema}" class="dropdown form-control">
                                 <option th:each="cinema : ${cinemas}"
                                         th:value="${cinema.id}"
                                         th:text="${cinema.toString()}">Wireframe

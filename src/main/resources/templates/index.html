@@ -40,36 +40,27 @@
     <br/>
     <div class="container">
         <div class="row">
-            <div class="main-container">
-                <h3>Lista kin</h3>
-                <hr/>
-                <form action="#" th:action="@{/}" th:object="${cinema}" method="post">
-                    <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
-                    <div><label> Wybierz kino:
-                        <select th:field="${cinema.id}" class="dropdown">
-                            <option th:each="cinema : ${cinemas}"
-                                    th:value="${cinema.id}"
-                                    th:text="${cinema.toString()}">Wireframe
-                            </option>
-                        </select>
-                    </label></div>
-                    <center>
-                        <div>
-                            <button type="submit" class="btn btn-md btn-warning">Dodaj</button>
-                        </div>
-                    </center>
-                </form>
-            </div>
-        </div>
-        <br /><br />
-        <div class="row">
+            <div class="toLeft">
             <div class="col-md-7">
-                <div class="main-container">
-                    <h2>Repertuar</h2>
+            <div class="main-container">
+                    <h3>Lista kin</h3>
                     <hr/>
-                    <div class="panel panel-default">
+                    <form action="#" th:action="@{/}" th:object="${cinema}" method="post">
+                        <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
+                        <div><label> Wybierz kino:
+                            <select th:field="${cinema.id}" class="dropdown form-control">
+                                <option th:each="cinema : ${cinemas}"
+                                        th:value="${cinema.id}"
+                                        th:text="${cinema.toString()}">Wireframe
+                                </option>
+                            </select>
+                        </label></div>
 
-                    </div>
+                        <div>
+                            <button type="submit" class="btn btn-md btn-warning">Wybierz</button>
+                        </div>
+
+                    </form>
                 </div>
             </div>
             <div class="col-md-5">
@@ -119,6 +110,17 @@
                 </div>
             </div>
         </div>
+        </div>
+        <!--<br/><br/>-->
+        <!--<div class="row">-->
+
+            <!--<div class="main-container">-->
+                <!--<h2>Repertuar</h2>-->
+                <!--<hr/>-->
+                <!--<div class="panel panel-default">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </div>
 

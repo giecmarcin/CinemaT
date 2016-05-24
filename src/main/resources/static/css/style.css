@@ -45,3 +45,6 @@ select#cinemahall.dropdown{
 select#id.dropdown{
     color:black;; !important;
 }
+.toLeft{
+    margin-left:-30px;
+}

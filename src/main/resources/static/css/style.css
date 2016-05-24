@@ -43,7 +43,13 @@ select#cinemahall.dropdown{
 }
 
 select#id.dropdown{
-    color:black;; !important;
+    color: black;
+!important;
+}
+
+select#allAseats.dropdown {
+    color: black;
+!important;
 }
 .toLeft{
     margin-left:-30px;

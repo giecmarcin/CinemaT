@@ -14,7 +14,7 @@
                                 placeholder="Id"/></div>
                     <!--Przerób tego selecta na kwadraty tak, żeby to był jakby widok całej sali-->
                     <div><label> Wybierz wolne miejsce z listy:
-                        <select class="dropdown">
+                        <select class="dropdown" name="allAseats">
                             <option th:each="seat : ${allseats}"
                                     th:value="${seat.id}"
                                     th:text="${seat.toString()}">Wireframe

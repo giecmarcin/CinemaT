@@ -23,4 +23,9 @@ public class Seat {
     public Seat(int numberOfSeat) {
         this.numberOfSeat = numberOfSeat;
     }
+
+    @Override
+    public String toString() {
+        return " " + numberOfSeat;
+    }
 }

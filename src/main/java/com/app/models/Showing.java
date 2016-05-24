@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -29,6 +30,8 @@ public class Showing {
     @OneToOne
     private Movie movie;
 
+    @OneToMany
+    List<Seat> allBusySeats;
     public Showing() {
     }
 }

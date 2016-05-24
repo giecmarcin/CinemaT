@@ -7,6 +7,8 @@ import com.app.services.GenericService;
 import com.app.services.RoleService;
 import com.app.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -52,6 +54,13 @@ public class UserServiceImpl implements GenericService<User>, UserService {
     @Override
     public User login(String email, String password) {
         return userRepository.findByEmailAndPassword(email, password);
+    }
+
+    @Override
+    public User getCurrentUserFromContext() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userRepository.findUserByEmail(auth.getName());
+        return user;
     }
 
     @Override

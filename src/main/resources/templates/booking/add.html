@@ -10,7 +10,8 @@
             <div class="site-container">
                 <form action="#" th:action="@{/booking/add}" th:object="${bookingAndSeat}" method="post">
                     <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
-
+                    <div><input type="hidden" th:field="${bookingAndSeat.booking.showing.id}" class="form-control"
+                                placeholder="Id"/></div>
                     <!--Przerób tego selecta na kwadraty tak, żeby to był jakby widok całej sali-->
                     <div><label> Wybierz wolne miejsce z listy:
                         <select class="dropdown">
@@ -24,7 +25,7 @@
                     <br/>
                     <br/>
                     <div><label> Wybierz wolne miejsce z listy:
-                        <select th:field="${bookingAndSeat.seat}" class="dropdown">
+                        <select th:field="*{id}" class="dropdown">
                             <option th:each="seat : ${seats}"
                                     th:value="${seat.id}"
                                     th:text="${seat.toString()}">Wireframe

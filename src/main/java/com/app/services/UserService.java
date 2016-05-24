@@ -7,4 +7,6 @@ public interface UserService extends GenericService<User> {
     User findUserByEmail(String email);
 
     User login(String email, String password);
+
+    User getCurrentUserFromContext();
 }

@@ -85,6 +85,14 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- http://mvnrepository.com/artifact/commons-lang/commons-lang -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.3</version>
+		</dependency>
+
+
 	</dependencies>
 	
 	<build>

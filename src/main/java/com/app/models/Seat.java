@@ -2,6 +2,7 @@ package com.app.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang.StringUtils;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +27,7 @@ public class Seat {
 
     @Override
     public String toString() {
-        return " " + numberOfSeat;
+        String text = StringUtils.leftPad(String.valueOf(numberOfSeat), 2, "0"); // --> "005"
+        return text;
     }
 }

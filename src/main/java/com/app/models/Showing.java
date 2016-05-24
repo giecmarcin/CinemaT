@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity(name="Showing")
+@Entity(name = "Showing")
 public class Showing {
     @Id
     @GeneratedValue
@@ -23,7 +23,7 @@ public class Showing {
 
     @OneToOne
     private Cinema cinema;
-
+    //
     @OneToOne(fetch = FetchType.EAGER)
     private Cinemahall cinemahall;
 
@@ -32,6 +32,7 @@ public class Showing {
 
     @OneToMany
     List<Seat> allBusySeats;
+
     public Showing() {
     }
 }

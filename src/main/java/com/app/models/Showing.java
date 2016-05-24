@@ -24,7 +24,7 @@ public class Showing {
     @OneToOne
     private Cinema cinema;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Cinemahall cinemahall;
 
     @OneToOne

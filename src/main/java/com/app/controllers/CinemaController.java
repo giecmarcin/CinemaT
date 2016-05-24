@@ -2,7 +2,6 @@ package com.app.controllers;
 
 import com.app.models.Cinema;
 import com.app.models.Cinemahall;
-import com.app.models.Cinemahall;
 import com.app.models.dto.CinemaAndHall;
 import com.app.services.CinemaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,6 +100,7 @@ public class CinemaController {
         if(cinema!=null){
             cinemaAndHall.setCinema(cinema);
             cinemaAndHall.setCinemahall(cinemahall);
+            cinemaAndHall.getCinemahall().setNumberOfSeats(50);
             model.addAttribute("cAh", cinemaAndHall);
             return new ModelAndView("/cinema/addHall");
         }else{

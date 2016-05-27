@@ -1,13 +1,12 @@
 package com.app.controllers;
 
+import com.app.models.Cinema;
 import com.app.models.Seat;
 import com.app.models.Showing;
 import com.app.models.User;
 import com.app.models.dto.BookingAndSeat;
-import com.app.services.BookingService;
-import com.app.services.SeatService;
-import com.app.services.ShowingService;
-import com.app.services.UserService;
+import com.app.services.*;
+import com.app.services.impl.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -23,6 +24,9 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/booking")
 public class BookingController {
+
+    @Autowired
+    CinemaService cinemaService;
 
     @Autowired
     UserService userService;
@@ -64,6 +68,27 @@ public class BookingController {
             bookingService.bookAFewSeat(listOfSeatsId, currentUser, bookingAndSeat);
             return new ModelAndView("/booking/thanks");
         }
+    }
+
+    @RequestMapping(value = {"/all", "/all/{id}"})
+    public String getAllBooking(Map<String, Object> modelMap, @PathVariable("id") Optional<Long> id) {
+        Cinema cinema = new Cinema();
+        modelMap.put("cinema", cinema);
+        modelMap.put("cinemas", cinemaService.findAll());
+        if (id.isPresent()) {
+            cinema = cinemaService.findOne(id.get());
+            LocalDate currentDate = LocalDate.now();
+            Date date = DateUtils.asDate(currentDate);
+            List<Showing> showingsToday = showingService.findAllShowingByIsActiveAndCinemaAndDate(true, cinema, date);
+            modelMap.put("showingsToday", showingsToday);
+        }
+        return "booking/all";
+    }
+
+    @RequestMapping(value = {"/all", "/all/{id}"}, method = RequestMethod.POST)
+    public ModelAndView searchShowings(@ModelAttribute("cinema") Cinema cinema, BindingResult result) {
+        Long idCinema = Long.parseLong(result.getFieldValue("id").toString());
+        return new ModelAndView("redirect:/booking/all/" + idCinema);
     }
 
     @InitBinder("bookingAndSeat")

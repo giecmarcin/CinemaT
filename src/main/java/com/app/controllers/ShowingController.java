@@ -6,10 +6,10 @@ import com.app.models.Showing;
 import com.app.services.CinemaService;
 import com.app.services.MovieService;
 import com.app.services.ShowingService;
+import com.app.services.impl.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -86,10 +87,13 @@ public class ShowingController {
 
     @RequestMapping(value = {"/cinema/{id}"})
     public ModelAndView getAllShowingInCinema(Map<String, Object> modelMap, @PathVariable Optional<Long> id) {
-        System.out.println("tto: " + id.get());
+        LocalDate currentDate = LocalDate.now();
+
+        Date date = DateUtils.asDate(currentDate);
         if (id.isPresent()) {
-            List<Showing> showings = showingService.findAllShowingInCinema(id.get());
-           modelMap.put("showings", showings);
+            Cinema cinema = cinemaService.findOne(id.get());
+            List<Showing> showings = showingService.findAllShowingByIsActiveAndCinemaAndDate(true, cinema, date);
+            modelMap.put("showings", showings);
         }
         return new ModelAndView("/showing/allForUser");
     }

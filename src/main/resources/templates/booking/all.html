@@ -1,0 +1,61 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+<div layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="main-container">
+                <form action="#" th:action="@{/booking/all}" th:object="${cinema}" method="post">
+                    <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
+                    <div><label> Wybierz kino:
+                        <select th:field="${cinema.id}" class="dropdown form-control">
+                            <option th:each="cinema : ${cinemas}"
+                                    th:value="${cinema.id}"
+                                    th:text="${cinema.toString()}">Wireframe
+                            </option>
+                        </select>
+                    </label></div>
+                    <div>
+                        <button type="submit" class="btn btn-md btn-warning">Wybierz</button>
+                    </div>
+
+                    <br/>
+                    Wszystkie rezerwacje aktywne na dziś
+                    <table class="table table-hover">
+                        <tr>
+                            <th>ID</th>
+                            <th>Film</th>
+                            <th>Użytkownik</th>
+                            <th>Godzina</th>
+                            <th>Data pokazu</th>
+                            <th>Sala</th>
+                            <th>Akcje</th>
+                        </tr>
+                        <tr th:each="showing  : ${showingsToday}">
+                            <td th:text="${showing.id}">Id</td>
+                            <td th:text="${showing.movie.title}">Nazwa filmu</td>
+                            <td th:text="${showing.movie.title}">Nazwa filmu</td>
+                            <td th:text="${showing.time}">Godzina</td>
+                            <td th:text="${showing.date}">Data publikacji</td>
+                            <td th:text="${showing.cinemahall.getName()}">Sala</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <a th:href="@{/booking/add/{id}/(id=${showing.id})}"
+                                       class="btn btn-sm btn-primary">Rezerwuj</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <br/>
+                    Wszystkie aktywne rezerwacje
+                    <br/>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

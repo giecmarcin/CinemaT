@@ -12,4 +12,6 @@ import java.util.List;
  */
 public interface ShowingRepository extends JpaRepository<Showing,Serializable> {
     List<Showing> findByCinema(Cinema cinema);
+
+    List<Showing> findByIsActive(boolean isActive);
 }

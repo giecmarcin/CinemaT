@@ -34,6 +34,7 @@ public class Showing {
     List<Seat> allBusySeats;
 
     public Showing() {
+        isActive = true;
     }
 
     private boolean isActive;

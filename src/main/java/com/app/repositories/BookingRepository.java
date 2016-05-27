@@ -13,4 +13,6 @@ public interface BookingRepository extends JpaRepository<Booking, Serializable> 
     List<Booking> findByShowing(Showing showing);
 
     List<Booking> findByUser(User user);
+
+    List<Booking> findByIsActive(boolean isActive);
 }

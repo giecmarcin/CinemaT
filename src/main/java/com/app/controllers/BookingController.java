@@ -57,22 +57,13 @@ public class BookingController {
     public ModelAndView processBookingForm(@Valid @ModelAttribute("bookingAndSeat") BookingAndSeat bookingAndSeat, BindingResult result) {
         if (result.hasErrors()) {
             System.out.println(result.getAllErrors());
+            return new ModelAndView("redirect:/");
         } else {
             User currentUser = userService.getCurrentUserFromContext();
-            Long idOfSeat = Long.parseLong(result.getFieldValue("id").toString());
-            Seat seat = seatService.findOne(idOfSeat);
-
-            Showing showing = showingService.findOne(bookingAndSeat.getBooking().getShowing().getId());
-            List<Seat> busySeats = showing.getAllBusySeats();
-            busySeats.add(seat);
-            showingService.save(showing);
-
-            bookingAndSeat.getBooking().setShowing(showing);
-            bookingAndSeat.getBooking().setUser(currentUser);
-            bookingAndSeat.getBooking().setSeat(seatService.findOne(idOfSeat));
-            bookingService.save(bookingAndSeat.getBooking());
+            String listOfSeatsId = result.getFieldValue("seatsId").toString();
+            bookingService.bookAFewSeat(listOfSeatsId, currentUser, bookingAndSeat);
+            return new ModelAndView("/booking/thanks");
         }
-        return new ModelAndView("redirect:/");
     }
 
     @InitBinder("bookingAndSeat")

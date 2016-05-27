@@ -64,3 +64,8 @@ select#allAseats.dropdown {
     background-repeat: no-repeat;
     color: black;
 }
+
+select#seatsId.dropdown {
+    color: black;
+!important;
+}

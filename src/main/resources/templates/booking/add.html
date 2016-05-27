@@ -36,7 +36,7 @@
                     <br/>
                     <br/>
                     <div><label> Wybierz wolne miejsce z listy:
-                        <select th:field="*{id}" class="dropdown">
+                        <select th:field="*{seatsId}" class="dropdown" multiple="multiple">
                             <option th:each="seat : ${seats}"
                                     th:value="${seat.id}"
                                     th:text="${seat.toString()}">Wireframe

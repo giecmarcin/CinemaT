@@ -1,0 +1,17 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+
+<div layout:fragment="content">
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="site-container">
+                Dziękujemy za zarezerowanie biletu.
+                <a th:href="@{/home}" class="btn btn-sm btn-danger">Strona główna</a>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

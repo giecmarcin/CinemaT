@@ -26,5 +26,8 @@ public class Booking {
     private Seat seat;
 
     public Booking() {
+        isActive = true;
     }
+
+    private boolean isActive;
 }

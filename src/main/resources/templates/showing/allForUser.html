@@ -64,6 +64,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nazwa filmu</th>
+                                <th>Godzina</th>
                                 <th>Data pokazu</th>
                                 <th>Sala</th>
                                 <th>Akcje</th>
@@ -71,6 +72,7 @@
                             <tr th:each="showing  : ${showings}">
                                 <td th:text="${showing.id}">Id</td>
                                 <td th:text="${showing.movie.title}">Nazwa filmu</td>
+                                <td th:text="${showing.time}">Godzina</td>
                                 <td th:text="${showing.date}">Data publikacji</td>
                                 <td th:text="${showing.cinemahall.getName()}">Sala</td>
                                 <td>

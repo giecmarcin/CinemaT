@@ -5,6 +5,7 @@ import com.app.models.Showing;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,5 +14,8 @@ import java.util.List;
 public interface ShowingRepository extends JpaRepository<Showing,Serializable> {
     List<Showing> findByCinema(Cinema cinema);
 
-    List<Showing> findByIsActive(boolean isActive);
+    List<Showing> findByIsActiveAndCinema(boolean isActive, Cinema cinema);
+
+    List<Showing> findByIsActiveAndCinemaAndDate(boolean isActive, Cinema cinema, Date date);
+
 }

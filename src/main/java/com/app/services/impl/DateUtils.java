@@ -1,5 +1,7 @@
 package com.app.services.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,6 +24,19 @@ public class DateUtils {
 
     public static LocalDateTime asLocalDateTime(Date date) {
         return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime();
+    }
+
+    public static java.util.Date getDateFromString(String textDate) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+
+            date = formatter.parse(textDate);
+            return date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 }
 

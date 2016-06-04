@@ -39,20 +39,14 @@
     <div class="container">
         <div class="row">
 
-            <!--<form action="#" th:action="@{/}" th:object="${cinema}" method="post">-->
-                <!--&lt;!&ndash;<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>&ndash;&gt;-->
-                <!--Wybierz kino:-->
-                <!--<select th:field="${cinema.id}" class="dropdown">-->
-                    <!--<option th:each="cinema : ${cinemas}"-->
-                            <!--th:value="${cinema.id}"-->
-                            <!--th:text="${cinema.toString()}">Wireframe-->
-                    <!--</option>-->
-                <!--</select>-->
-
-                <!--<br/>-->
-                <!--<button type="submit" class="btn btn-md btn-primary pull-right">Save</button>-->
-            <!--</form>-->
-
+            <form action="#" th:action="@{/showing/cinema/(id=${dateOfMovie.idCinema})}" th:object="${dateOfMovie}" method="post">
+                <br/><input type="hidden" th:field="*{idCinema}" class="form-control" placeholder="Id"/>
+                Wybierz datę:
+                <div><label>:<input type="date" th:field="*{date}" class="form-control"
+                                    placeholder="Rok wydania"/></label></div>
+                <button type="submit" class="btn btn-md btn-primary pull-right">Save</button>
+            </form>
+            <br/>
             <div class="col-md-7">
                 <div class="main-container">
                     <h2>Repertuar</h2>
@@ -89,7 +83,7 @@
             <div class="col-md-5">
                 <div class="main-container">
                     <h2>Aktualności</h2>
-                    <hr />
+                    <hr/>
                     <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo1">Zmiana dat
                         emisji
                     </button>
@@ -102,7 +96,8 @@
                         zaprezentujemy widzom tydzień wcześniej czyli we wtorek 12 kwietnia. Za niedogodności
                         przepraszamy.
                     </div>
-                    <br/><hr />
+                    <br/>
+                    <hr/>
                     <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo2">Pożar w
                         sali kinowej
                     </button>
@@ -115,7 +110,8 @@
                         zaprezentujemy widzom tydzień wcześniej czyli we wtorek 12 kwietnia. Za niedogodności
                         przepraszamy.
                     </div>
-                    <br/><hr />
+                    <br/>
+                    <hr/>
                     <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#demo3">Nowości w
                         repertuarze
                     </button>

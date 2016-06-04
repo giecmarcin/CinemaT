@@ -1,9 +1,6 @@
 package com.app.controllers;
 
-import com.app.models.Cinema;
-import com.app.models.Seat;
-import com.app.models.Showing;
-import com.app.models.User;
+import com.app.models.*;
 import com.app.models.dto.BookingAndSeat;
 import com.app.services.*;
 import com.app.services.impl.DateUtils;
@@ -79,8 +76,11 @@ public class BookingController {
             cinema = cinemaService.findOne(id.get());
             LocalDate currentDate = LocalDate.now();
             Date date = DateUtils.asDate(currentDate);
-            List<Showing> showingsToday = showingService.findAllShowingByIsActiveAndCinemaAndDate(true, cinema, date);
-            modelMap.put("showingsToday", showingsToday);
+
+            List<Booking> allActiveBookingFromCinema = bookingService.findByCinemaAndIsActive(cinema,true);
+            List<Booking> allBookingFromCinema = bookingService.findByCinema(cinema);
+            modelMap.put("allActiveBookingFromCinema", allActiveBookingFromCinema);
+            modelMap.put("allBookingFromCinema", allBookingFromCinema);
         }
         return "booking/all";
     }

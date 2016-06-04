@@ -22,36 +22,82 @@
                     </div>
 
                     <br/>
-                    Wszystkie rezerwacje aktywne na dziś
+                    Wszystkie aktywne rezerwacje z wybranego kina:
                     <table class="table table-hover">
                         <tr>
                             <th>ID</th>
-                            <th>Film</th>
                             <th>Użytkownik</th>
-                            <th>Godzina</th>
-                            <th>Data pokazu</th>
-                            <th>Sala</th>
-                            <th>Akcje</th>
+                            <th>Film</th>
+                            <th>Data</th>
+                            <th>Szczegóły</th>
                         </tr>
-                        <tr th:each="showing  : ${showingsToday}">
-                            <td th:text="${showing.id}">Id</td>
-                            <td th:text="${showing.movie.title}">Nazwa filmu</td>
-                            <td th:text="${showing.movie.title}">Nazwa filmu</td>
-                            <td th:text="${showing.time}">Godzina</td>
-                            <td th:text="${showing.date}">Data publikacji</td>
-                            <td th:text="${showing.cinemahall.getName()}">Sala</td>
+                        <tr th:each="booking  : ${allActiveBookingFromCinema}">
+                            <td th:text="${booking.id}">Id</td>
+                            <td>
+                                <p th:text="${booking.user.name}">UserName</p>
+                                <br/>
+                                <p th:text="${booking.user.email}">UserEmail</p>
+                            </td>
+                            <td>
+                            <p th:text="${booking.showing.movie.title}">Title</p>
+                            </td>
+                            <td>
+                                <p th:text="${booking.showing.date}">Date</p>
+                                <br/><p th:text="${booking.showing.time}">Time</p>
+                            </td>
+
+                            <td>
+                                Nr sali: <p th:text="${booking.showing.cinemahall}">Sala</p>
+                                Nr miejsca: <p th:text="${booking.seat.numberOfSeat}">Sala</p>
+                            </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="...">
-                                    <a th:href="@{/booking/add/{id}/(id=${showing.id})}"
-                                       class="btn btn-sm btn-primary">Rezerwuj</a>
+                                    <a th:href="@{/booking/change/{id}/(id=${booking.id})}"
+                                       class="btn btn-sm btn-primary">Zmień status</a>
                                 </div>
                             </td>
                         </tr>
                     </table>
 
                     <br/>
-                    Wszystkie aktywne rezerwacje
                     <br/>
+
+                    Wszystkie rezerwacje z wybranego kina:
+                    <table class="table table-hover">
+                        <tr>
+                            <th>ID</th>
+                            <th>Użytkownik</th>
+                            <th>Film</th>
+                            <th>Data</th>
+                            <th>Szczegóły</th>
+                        </tr>
+                        <tr th:each="booking  : ${allBookingFromCinema}">
+                            <td th:text="${booking.id}">Id</td>
+                            <td>
+                                <p th:text="${booking.user.name}">UserName</p>
+                                <br/>
+                                <p th:text="${booking.user.email}">UserEmail</p>
+                            </td>
+                            <td>
+                                <p th:text="${booking.showing.movie.title}">Title</p>
+                            </td>
+                            <td>
+                                <p th:text="${booking.showing.date}">Date</p>
+                                <br/><p th:text="${booking.showing.time}">Time</p>
+                            </td>
+
+                            <td>
+                                Nr sali: <p th:text="${booking.showing.cinemahall}">Sala</p>
+                                Nr miejsca: <p th:text="${booking.seat.numberOfSeat}">Sala</p>
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <a th:href="@{/booking/change/{id}/(id=${booking.id})}"
+                                       class="btn btn-sm btn-primary">Zmień status</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
 
                 </form>
             </div>

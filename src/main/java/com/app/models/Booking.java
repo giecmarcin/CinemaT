@@ -3,10 +3,7 @@ package com.app.models;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -16,14 +13,17 @@ public class Booking {
     @GeneratedValue
     private Long id;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Showing showing;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Seat seat;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    private Cinema cinema;
 
     public Booking() {
         isActive = true;

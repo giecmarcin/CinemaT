@@ -37,17 +37,26 @@
     </div>
     <br/>
     <div class="container">
-        <div class="row">
 
-            <form action="#" th:action="@{/showing/cinema/(id=${dateOfMovie.idCinema})}" th:object="${dateOfMovie}" method="post">
-                <br/><input type="hidden" th:field="*{idCinema}" class="form-control" placeholder="Id"/>
-                Wybierz datę:
-                <div><label>:<input type="date" th:field="*{date}" class="form-control"
-                                    placeholder="Rok wydania"/></label></div>
-                <button type="submit" class="btn btn-md btn-primary pull-right">Pokaż</button>
-            </form>
-            <br/>
+
+
+            <div class="row">
             <div class="col-md-7">
+                <div class="main-container">
+                    <center><form action="#" th:action="@{/showing/cinema/(id=${dateOfMovie.idCinema})}" th:object="${dateOfMovie}" method="post">
+                        <input type="hidden" th:field="*{idCinema}" class="form-control" placeholder="Id"/>
+
+                        <div><label><h3>Wybierz datę:</h3><input type="date" th:field="*{date}" class="form-control"
+                                                        placeholder="Rok wydania"/></label></div>
+                        <div class="button-marg2">
+                            <button type="submit" class="btn btn-md btn-warning">Pokaż</button>
+                        </div>
+                    </form>
+                    </center>
+
+
+                </div>
+                <br />
                 <div class="main-container">
                     <h2>Repertuar</h2>
                     <hr/>

@@ -30,6 +30,23 @@
     border-color: #be780a #e2e2e2;
     padding: 25px;
 }
+.cinema-pan{
+    margin: 0 auto;
+    background-color: #2c2c2c;
+    width: 50%;
+    border-radius: 20px;
+    border: 0px;
+    padding: 25px;
+}
+.main-container2{
+    margin: 0 auto;
+    background-color: #3c3c3c;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #be780a #e2e2e2;
+    width:50%;
+    padding: 25px;
+}
 select#movie.dropdown{
     color:black; !important;
 }
@@ -68,4 +85,16 @@ select#allAseats.dropdown {
 select#seatsId.dropdown {
     color: black;
 !important;
+}
+.panel > .table > tbody:first-child > tr:first-child th, .panel > .table > tbody:first-child > tr:first-child td{
+    background-color:#e08e0b;
+}
+.wiersz-pierwszy{
+    background-color:#e08e0b;
+}
+.button-marg{
+    margin-left:-72%;
+}
+.button-marg2{
+    margin-left:-64%;
 }

@@ -1,0 +1,28 @@
+System internetowej rezerwacji biletów w kinie.
+
+Projek do działania wymaga pluginu Lombok: https://projectlombok.org/.
+Instalacja pluginu lombok w Intellij.
+
+1. Klikamy File.
+2. Klikamy Settings.
+3. Wybieramy Plugins.
+4. W polu wyszukiwania wpisujemy lombok.
+5. Klimay Search in repositories.
+6. Instalujemy i restartujemy Intellij.
+
+Do prawidłowego działania pluginu wymagny jest włączony Annotation Processors.
+W Intellij Settings/Build, Execution, Deployment/Compiler.
+
+Projekt korzysta z lokalnej bazy danych MySQL.
+Ustawienia do bazy danych znajdują się w pliku application.properties
+
+spring.datasource.url:jdbc:mysql://localhost/cinema  - SID bazy danych
+spring.datasource.username=marcin - nazwa użytkownika, który ma dostęp do operacji wykonywanych na bazie cinema
+spring.datasource.password=marcin - hasło użytkownika
+spring.datasource.driverClassName=com.mysql.jdbc.Driver - sterownik do połączenia się bazą
+spring.jpa.hibernate.ddl-auto=update - właściwość określa co ma się stać z bazą
+
+
+update: aktulizacja schematu bazy i danych
+create - drop: utowrzenie schematu bazy danych, danych oraz usunięcie po wyłączeniu aplikacji
+

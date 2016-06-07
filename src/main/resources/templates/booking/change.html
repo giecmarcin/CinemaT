@@ -1,0 +1,29 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+
+<div layout:fragment="content">
+    <br/>
+    <div class="container">
+        <div class="row">
+
+            <div class="site-container">
+                <center><h3> Zmień status </h3></center>
+                <form action="#" th:action="@{/booking/change/{idBooking}/(id=${booking.id})}" th:object="${booking}" method="post">
+                    <br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>
+                    <br/> Aktywny <input type="radio" th:field="*{active}" th:value="${1}" />
+                    <br/> Nieaktywny <input type="radio" th:field="*{active}" th:value="${0}" />
+
+                    <br/>
+                    <center>
+                        <div>
+                            <button type="submit" class="btn btn-md btn-warning">Potwierdź</button>
+                        </div>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

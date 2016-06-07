@@ -6,6 +6,7 @@ import com.app.services.*;
 import com.app.services.impl.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -91,8 +92,39 @@ public class BookingController {
         return new ModelAndView("redirect:/booking/all/" + idCinema);
     }
 
+
+    @RequestMapping(value = {"/change/{idBooking}"})
+    public ModelAndView changeStatusOfBookingGet(@PathVariable("idBooking") Optional<Long> id, Map<String, Object> modelMap){
+        if(id.isPresent()){
+            Booking booking = bookingService.findOne(id.get());
+            modelMap.put("booking", booking);
+            return new ModelAndView("/booking/change");
+        }
+        return new ModelAndView("");
+    }
+
+    @RequestMapping(value = {"/change/{idBooking}"}, method = RequestMethod.POST)
+    public ModelAndView changeStatusOfBookingPost(@ModelAttribute("booking") Booking booking, @ModelAttribute("active") boolean active, BindingResult result){
+        if(result.hasErrors()){
+            System.out.println(result.getAllErrors());
+        }else{
+            if(booking!=null){
+                Booking b = bookingService.findOne(booking.getId());
+                b.setActive(active);
+                bookingService.save(b);
+            }
+        }
+
+        return new ModelAndView("redirect:/booking/all");
+    }
+
     @InitBinder("bookingAndSeat")
     public void initialiseBinder(WebDataBinder binder) {
         //binder.setAllowedFields("booking", "id");
+    }
+
+    @InitBinder("booking")
+    public void initialiseBinderBooking(WebDataBinder binder) {
+        binder.setAllowedFields("id", "isActive");
     }
 }

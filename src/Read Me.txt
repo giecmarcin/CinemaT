@@ -26,3 +26,5 @@ spring.jpa.hibernate.ddl-auto=update - właściwość określa co ma się stać 
 update: aktulizacja schematu bazy i danych
 create - drop: utowrzenie schematu bazy danych, danych oraz usunięcie po wyłączeniu aplikacji
 
+Prezentacja aplikacji:
+https://youtu.be/2165XdfgBrA

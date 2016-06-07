@@ -56,9 +56,15 @@ public class CinemaServiceImpl implements CinemaService {
             cinemahall.getSeats().add(seat);
         }
         Cinemahall cH = cinemaHallService.save(cinemahall);
-        Cinema cinema = cinemaRepository.findOne(cinemaId);
+
+        Cinema cinema = cinemaRepository.findOne(cinemaId); //znalezc kino
+        //utworzyc sale
+        //zapisac sale
+
         cinema.getCinemahalls().add(cinemahall);
+        System.out.println(cH.getId() + "id sali");
         cinemaRepository.save(cinema);
+
     }
 
     @Override

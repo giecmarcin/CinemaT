@@ -1,6 +1,8 @@
 package com.app.controllers;
 
+import com.app.models.Role;
 import com.app.models.User;
+import com.app.services.RoleService;
 import com.app.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +28,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping(value = {"/add", "/add/{id}"})
     public ModelAndView getAddMovieForm(Model model, @PathVariable Optional<Long> id) {
@@ -50,6 +56,10 @@ public class UserController {
             newUser = user;
             userService.save(user);
         } else {
+            Role role = roleService.findByName("ROLE_USER");
+            List<Role> roles = new LinkedList<>();
+            roles.add(role);
+            user.setRoles(roles);
             userService.save(user);
         }
         return new ModelAndView("redirect:/");

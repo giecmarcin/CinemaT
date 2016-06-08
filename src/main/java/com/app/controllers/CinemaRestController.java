@@ -2,16 +2,13 @@ package com.app.controllers;
 
 
 import com.app.models.Cinema;
-import com.app.models.User;
 import com.app.services.CinemaService;
-import com.app.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +44,7 @@ public class CinemaRestController {
     @ResponseBody
     ResponseEntity<Void> processAddMovieForm(@RequestBody Cinema cinema) {
         cinemaService.save(cinema);
+
         return new ResponseEntity<Void>(new HttpHeaders(), HttpStatus.CREATED);
     }
 

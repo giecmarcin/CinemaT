@@ -28,3 +28,9 @@ create - drop: utowrzenie schematu bazy danych, danych oraz usunięcie po wyłą
 
 Prezentacja aplikacji:
 https://youtu.be/2165XdfgBrA
+
+Konto administratora:
+login: giecmarcin@outlook.com
+hasło: test
+
+można zmienić w services/impl/Init

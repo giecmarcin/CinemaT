@@ -10,6 +10,7 @@
 
             <div class="site-container2">
                 <center><h3> Rezerwacja miejsc </h3></center>
+                <hr/>
                 <form action="#" th:action="@{/booking/add}" th:object="${bookingAndSeat}" method="post">
                     <!--<br/><input type="hidden" th:field="*{id}" class="form-control" placeholder="Id"/>-->
                     <div><input type="hidden" th:field="${bookingAndSeat.booking.showing.id}" class="form-control"
@@ -32,9 +33,10 @@
                     <!--</select></label>-->
                     <!--</div>-->
 
+
                     <br/>
-                    <br/>
-                    <div><center><label><h4> Wybierz wolne miejsca z listy: </h4>
+
+                    <div class="msect"><br /><center><label><h4> Wybierz wolne miejsca z listy: </h4>
                         <select th:field="*{seatsId}" class="dropdown form-control2" multiple="multiple">
                             <option th:each="seat : ${seats}"
                                     th:value="${seat.id}"
@@ -42,12 +44,12 @@
                             </option>
                         </select></label></center>
                     </div>
-                    <br />
                     <center>
-                        <div>
-                            <button type="submit" class="btn btn-md btn-warning">Potwierdź</button>
-                        </div>
+
+                            <button type="submit" class="btn btn-sm btn-warning">Potwierdź</button>
+
                     </center>
+
                 </form>
             </div>
         </div>

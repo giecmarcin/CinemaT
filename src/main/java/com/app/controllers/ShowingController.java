@@ -3,13 +3,14 @@ package com.app.controllers;
 import com.app.models.Cinema;
 import com.app.models.Movie;
 import com.app.models.Showing;
+import com.app.models.dto.DateOfMovie;
 import com.app.services.CinemaService;
 import com.app.services.MovieService;
 import com.app.services.ShowingService;
+import com.app.services.impl.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -84,19 +86,59 @@ public class ShowingController {
     }
 
 
-    @RequestMapping(value = {"/cinema/{id}"})
-    public ModelAndView getAllShowingInCinema(Map<String, Object> modelMap, @PathVariable Optional<Long> id) {
-        System.out.println("tto: " + id.get());
+    @RequestMapping(value = {"/cinema/{id}", "/cinema"})
+    public ModelAndView getAllShowingInCinema(Map<String, Object> modelMap, @PathVariable Optional<Long> id, @RequestParam(value = "date", required = false)Optional<String> d) {
+        DateOfMovie dateOfMovie = new DateOfMovie();
+
         if (id.isPresent()) {
-            List<Showing> showings = showingService.findAllShowingInCinema(id.get());
-           modelMap.put("showings", showings);
+            Cinema cinema = cinemaService.findOne(id.get());
+            dateOfMovie.setIdCinema(cinema.getId());
+
+            if(d.isPresent()){
+                Date choosenDate = DateUtils.getDateFromString(d.get());
+                dateOfMovie.setDate(choosenDate);
+            }else{
+                //No date
+                LocalDate currentDate = LocalDate.now();
+                Date date = DateUtils.asDate(currentDate);
+                dateOfMovie.setDate(date);
+            }
+
+            List<Showing> showings = showingService.findAllShowingByIsActiveAndCinemaAndDate(true, cinema, dateOfMovie.getDate());
+            modelMap.put("dateOfMovie", dateOfMovie);
+            modelMap.put("showings", showings);
         }
         return new ModelAndView("/showing/allForUser");
     }
 
+    //http://localhost:8080/showing/cinema/1
+    @RequestMapping(value = {"/cinema", "/cinema/{id}"}, method = RequestMethod.POST)
+    public ModelAndView getAllShowingInCinemaPost(@ModelAttribute("dateOfMovie") DateOfMovie dateOfMovie, BindingResult result) {
+
+        if (result.hasErrors()) {
+            System.out.println(result.getAllErrors());
+        } else {
+            String newstring = new SimpleDateFormat("yyyy-MM-dd").format(dateOfMovie.getDate());
+            System.out.println(newstring); // 2011-01-18
+            String text = "?date=" + newstring;
+            return new ModelAndView("redirect:/showing/cinema/" + dateOfMovie.getIdCinema() + "/" + text);
+        }
+        return new ModelAndView("/showing/allForUser");
+    }
+
+
     @InitBinder("showing")
     public void initialiseBinder(WebDataBinder binder) {
         binder.setAllowedFields("id", "movie", "cinema", "date", "time");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
+        //Register it as custom editor for the Date type
+        binder.registerCustomEditor(Date.class, editor);
+    }
+
+    @InitBinder("dateOfMovie")
+    public void initialiseBinder2(WebDataBinder binder) {
+        binder.setAllowedFields("date", "idCinema");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
         //Register it as custom editor for the Date type

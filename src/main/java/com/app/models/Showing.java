@@ -18,8 +18,8 @@ public class Showing {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @Temporal(TemporalType.TIME)
-    private Date time;
+    //@Temporal(TemporalType.TIME)
+    private String time;
 
     @OneToOne
     private Cinema cinema;
@@ -34,5 +34,8 @@ public class Showing {
     List<Seat> allBusySeats;
 
     public Showing() {
+        isActive = true;
     }
+
+    private boolean isActive;
 }

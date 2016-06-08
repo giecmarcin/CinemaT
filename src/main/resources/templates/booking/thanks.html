@@ -1,0 +1,19 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+
+<div layout:fragment="content">
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="site-container">
+                <center><h3>Powiadomienie</h3></center>
+                <hr />
+                <center><h4>Dziękujemy za zarezerowanie biletu/ów</h4></center><br />
+                <a th:href="@{/home}" class="btn btn-sm btn-warning">Powrót do strony głównej</a>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

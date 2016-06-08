@@ -8,6 +8,7 @@ import com.app.services.ShowingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -44,4 +45,15 @@ public class ShowingServiceImpl implements ShowingService {
         Cinema cinema = cinemaService.findOne(idOfCinema);
         return showingRepository.findByCinema(cinema);
     }
+
+    @Override
+    public List<Showing> findAllShowingByIsActiveAndCinema(boolean isActive, Cinema cinema) {
+        return showingRepository.findByIsActiveAndCinema(isActive, cinema);
+    }
+
+    @Override
+    public List<Showing> findAllShowingByIsActiveAndCinemaAndDate(boolean isActive, Cinema cinema, Date date) {
+        return showingRepository.findByIsActiveAndCinemaAndDate(isActive, cinema, date);
+    }
+
 }

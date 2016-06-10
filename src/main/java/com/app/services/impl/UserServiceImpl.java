@@ -22,10 +22,9 @@ import java.util.List;
 public class UserServiceImpl implements GenericService<User>, UserService {
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
     RoleService roleService;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public User save(User user) {
@@ -67,4 +66,12 @@ public class UserServiceImpl implements GenericService<User>, UserService {
     public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }
+
+    @Override
+    public User findUserByName(String name) {
+        return userRepository.findUserByName(name);
+    }
+
+
+
 }

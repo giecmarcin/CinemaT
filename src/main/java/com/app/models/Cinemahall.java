@@ -1,5 +1,6 @@
 package com.app.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,17 +12,15 @@ import java.util.List;
 @Setter
 @Entity(name="Cinemahall")
 public class Cinemahall {
+    @OneToMany
+    @JoinColumn(name = "cinemaHall_id")
+    @JsonIgnore
+    List<Seat> seats;
     @Id
     @GeneratedValue
     private Long id;
-
     private String name;
-
     private int numberOfSeats;
-
-    @OneToMany
-    @JoinColumn(name = "cinemaHall_id")
-    List<Seat> seats;
 
     public Cinemahall() {
         seats = new LinkedList<Seat>();

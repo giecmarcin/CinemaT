@@ -11,5 +11,7 @@ import java.io.Serializable;
 public interface UserRepository extends JpaRepository<User, Serializable> {
     User findUserByEmail(String email);
 
+    User findUserByName(String name);
+
     User findByEmailAndPassword(String email, String password);
 }

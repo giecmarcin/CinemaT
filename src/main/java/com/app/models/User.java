@@ -1,10 +1,13 @@
 package com.app.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,6 +31,7 @@ public class User {
     //For Test
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable
+    @JsonIgnore
     private List<Role> roles;
 
     public User() {

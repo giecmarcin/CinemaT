@@ -27,7 +27,6 @@ public class UserRestController {
     public ResponseEntity<List<User>> getAllUsers(Model model) {
         List<User> users = userService.findAll();
         return new ResponseEntity<List<User>>(users, new HttpHeaders(), HttpStatus.OK);
-
     }
 
     @RequestMapping(value = "/{name}")
